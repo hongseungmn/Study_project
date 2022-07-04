@@ -1,0 +1,119 @@
+package MainUI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ServerFrame extends JFrame {
+
+	private JPanel panelCenter;
+	private JPanel panelSouth;
+	private JTextField tf;
+	private JButton btn;	
+	private JTextArea ta;
+	private ServerSocket server = null;
+	private ArrayList<ServerThread> list = new ArrayList<>();
+	public ClientFrame clientFrame;
+	public ServerFrame(String title) {
+		
+		setLocation(400, 250);
+		setSize(400,600);
+		setLayout(new BorderLayout());
+		
+		setNorth();
+		
+		setCenter();
+		
+		setVisible(true);
+		
+	}
+
+
+	private void setNorth() {
+		panelCenter = new JPanel();
+		panelCenter.setLayout(new BorderLayout());
+		panelCenter.setBackground(Color.BLUE);
+		
+		ta = new JTextArea(7, 10);
+		ta.setLineWrap(true);
+		ta.setEditable(false);
+		JScrollPane sp = new JScrollPane(ta,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		panelCenter.add(sp);
+		
+		add(panelCenter, BorderLayout.NORTH);
+	}
+
+	private void setCenter() {
+		panelSouth = new JPanel();
+		//panelSouth.setBackground(Color.RED);
+		
+		tf = new JTextField(20);
+		tf.addActionListener(this);
+		panelSouth.add(tf);
+		
+		btn = new JButton("전송");
+		btn.addActionListener(this);
+		panelSouth.add(btn);
+		
+		add(panelSouth, BorderLayout.SOUTH);
+	}
+
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		Object obj = e.getSource();
+//		
+//		if(obj == btn || obj == tf) {
+//			
+//		}
+//		
+//	}
+	
+//	public static void main(String[] args) {
+//		ServerFrame sf = new ServerFrame("Server");
+//		sf.setServer();
+//	}
+
+	public void setServer() {
+		try {
+			server  = new ServerSocket(8888);
+			ta.append(" >>> 연결 대기중... \n");
+			
+			while(true) {
+				//접속이 될때마다 소켓이 연결된 것을 알려줌
+				Socket socket = server.accept();
+				ta.append(">> 클라이언트 연결됨 \n");
+				ServerThread st = new ServerThread(socket, list);
+				list.add(st);
+				st.start();
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				//socket.close();
+				server.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

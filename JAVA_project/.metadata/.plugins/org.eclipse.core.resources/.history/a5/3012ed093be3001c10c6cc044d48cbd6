@@ -1,0 +1,14 @@
+package MainUI;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class addUser extends JFrame {
+	public addUser() {
+		setTitle("add User");
+		setSize(300,400);
+		setLocationRelativeTo(this);
+		setVisible(true);
+	}
+
+}

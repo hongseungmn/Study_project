@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Loaded Event와 Window의 load이벤트의 차이점</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //ready 함수는 외부 이미지나 컨텐츠를 다 로딩이 안되는 시점
+        //$(document).ready(function() {
+        //    //var $image = $("#image");
+        //    console.log("이미지의 너비 : " + $(image).width())
+        //});
+        
+        //window.onload이벤트는 외부 이미지나 컨텐츠를 다 로딩이 된 후 발생하는 이벤트
+        window.onload = function() {
+            console.log("width = "+ $("#image").width());
+        }
+    </script>
+</head>
+<body>
+    <img src="images/apple.jpg" id="image">
+    
+</body>
+</html>

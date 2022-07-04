@@ -1,0 +1,601 @@
+package MainUI;
+
+
+
+
+import javax.swing.table.DefaultTableCellRenderer;
+
+
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.text.Document;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.*;
+
+
+
+
+
+
+
+public class MainUI extends JFrame implements ActionListener, ChangeListener, MouseListener {
+	
+	private RoundButton write_board;
+	private JTabbedPane TP;
+	private JButton search_btn;
+	private JComboBox<String> search_com;
+	private JTextField search_tf;
+	private JButton link_btn;
+	private JButton changeGraphBtn;
+	private ImageIcon class1_Icon;
+	private ImageIcon class1_Intro;
+	private JLabel class1_label;
+	private JLabel class2_label;
+	private JLabel class3_label;
+	private JPanel addGraph;
+	private JButton add_button;
+	private JTextField set_hour;
+	private JTextField set_minutes;
+	public String userId;
+	protected JTable main_Board;
+	public DB_Mysql useDB = new DB_Mysql(); 
+	public DefaultTableModel notice_table;
+	public JPanel graphPanel;
+	public JPanel graphPanel2;
+	
+	
+	public MainUI(String userId) {
+		setTitle("MainUI");
+		setSize(1000,1000);
+		setLocationRelativeTo(this);
+		setLayout(new BorderLayout());
+		
+		this.userId = userId;
+		
+		TP = new JTabbedPane();
+		UIManager.put("TabbedPane.selected", new Color(255,255,255));
+		TP.setBackground(new Color(200,0,0));
+		TP.setUI(new TabUI());
+		
+		JPanel mainBack = new JPanel();
+		ImageIcon main_background= new ImageIcon("src/img/mainback.png");
+		Image main_backImage = main_background.getImage();
+		int mainWidth = main_backImage.getWidth(null);
+		int mainHeight = main_backImage.getHeight(null);
+			
+		int Width = 1000;
+			
+		double rt = (double)Width/(double)mainWidth;
+			
+		int wt = (int)(mainWidth * rt);
+		int ht = (int)(mainHeight * rt);
+			
+		Image resizeMainImage = main_backImage.getScaledInstance(wt, ht, Image.SCALE_SMOOTH);
+		JLabel mainImage = new JLabel(new ImageIcon(resizeMainImage));
+		add(mainImage,BorderLayout.NORTH);
+		
+		
+		
+		// 메인 가운데 이미지
+//		
+		
+		  
+		// tab1 
+		JPanel tab1 = new JPanel();
+		tab1.setLayout(null);
+		ImageIcon background= new ImageIcon("src/img/mainback3.png");
+		Image backImage = background.getImage();
+		int srcWidth = backImage.getWidth(null);
+		int srcHeight = backImage.getHeight(null);
+			
+		int newWidth = 1000;
+			
+		double ratio = (double)newWidth/(double)srcWidth;
+			
+		int w = (int)(srcWidth * ratio);
+		int h = (int)(srcHeight * ratio);
+			
+		Image resizeImage = backImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+		JLabel main_main = new JLabel(new ImageIcon(resizeImage));
+		
+		
+		
+		ImageIcon link_icon = new ImageIcon("src/img/Button1.png");
+		Image link_image = link_icon.getImage();
+		link_image = link_image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+		link_icon = new ImageIcon(link_image);
+		link_btn = new JButton("자세하게 알아보기 =>(Click!!)",link_icon);
+		link_btn.setFont(new Font("고딕",Font.BOLD,15));
+		link_btn.addActionListener(this);
+		
+		tab1.add(link_btn);
+		link_btn.setBounds(750,5,250,40);
+		tab1.add(main_main);
+		main_main.setBounds(0,0,1000,700);
+		
+
+
+		
+		
+		JPanel tab2 = new JPanel();
+		
+		
+		
+		
+		
+		
+		//tab2
+		
+		tab2.setLayout(new BorderLayout());
+		
+		JPanel search_panel = new JPanel();
+		JPanel main_content = new JPanel();
+		
+		ImageIcon tab2_background= new ImageIcon("src/img/mainback3.png");
+		Image tab2_backImage = background.getImage();
+		int tab2_srcWidth = backImage.getWidth(null);
+		int tab2_srcHeight = backImage.getHeight(null);
+			
+		int tab2_newWidth = 1000;
+			
+		double tab2_ratio = (double)tab2_newWidth/(double)tab2_srcWidth;
+			
+		int tab2_w = (int)(tab2_srcWidth * tab2_ratio);
+		int tab2_h = (int)(tab2_srcHeight * tab2_ratio);
+			
+		Image tab2_resizeImage = tab2_backImage.getScaledInstance(tab2_w, tab2_h, Image.SCALE_SMOOTH);
+		JLabel tab2_main_main = new JLabel(new ImageIcon(tab2_resizeImage));
+		
+		
+		String search_list[] = {"id","content","title","date"};
+		search_com = new JComboBox<String>(search_list);
+		
+		search_tf = new JTextField(20);
+		ImageIcon img = new ImageIcon("src/img/search_Icon.png");
+		Image changeImage = img.getImage();
+		changeImage = changeImage.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		img = new ImageIcon(changeImage);
+		search_btn = new JButton("search..",img);
+		search_btn.setBorderPainted(false); 
+		search_btn.setFocusPainted(false); 
+		search_btn.setContentAreaFilled(false);
+		search_btn.addActionListener(this);
+		
+		
+		write_board = new RoundButton("글쓰기");
+		write_board.setBounds(20, 5, 20, 50);
+		write_board.addActionListener(this);
+		
+	
+		
+		search_panel.setBackground(new Color(200,0,0));
+		search_panel.add(search_com);
+		search_panel.add(search_tf);
+		search_panel.add(search_btn);
+		search_panel.add(write_board);
+		tab2.add(search_panel,BorderLayout.NORTH);
+		
+		
+		String header[] = new String[] {"ID","Title","ConTents","Date","Answer"};
+
+		
+		notice_table = new DefaultTableModel(header,0) {
+			public boolean isCellEditable(int i, int c) {
+				return false;
+			} 
+		};
+		
+		
+		
+		main_Board = new JTable(notice_table);	
+		main_Board.setRowHeight(25);
+		main_Board.getColumn("ID").setPreferredWidth(2);
+		main_Board.getColumn("Title").setPreferredWidth(50);
+		main_Board.getColumn("ConTents").setPreferredWidth(200);
+		main_Board.getColumn("Date").setPreferredWidth(10);
+		main_Board.getColumn("Answer").setPreferredWidth(2);
+		TableRender table_rander = new TableRender();
+		
+		main_Board.getTableHeader().setReorderingAllowed(false);
+		main_Board.getTableHeader().setResizingAllowed(false);
+		main_Board.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		main_Board.setPreferredScrollableViewportSize(new Dimension(700,600));
+		main_Board.setFillsViewportHeight(true);
+		main_Board.setDefaultRenderer(Object.class, table_rander);
+		main_Board.addMouseListener(this);
+		JScrollPane scrollPane = new JScrollPane(main_Board);
+		main_content.add(scrollPane);
+		
+//		tab2_main_main.setBounds(0,0,1000,700);
+//		tab2.add(tab2_main_main);
+		
+		
+		tab2.add(main_content,BorderLayout.CENTER);
+		
+		
+		
+		
+		//tab3
+		JPanel tab3 = new JPanel();
+		tab3.setLayout(null);
+		
+		JPanel class_panel = new JPanel();
+		class_panel.setLayout(new FlowLayout(FlowLayout.LEFT,30,20));
+		Dimension size = new Dimension();
+		size.setSize(1300,300);
+		class_panel.setPreferredSize(size);
+		
+		
+		JScrollPane class_scroll = new JScrollPane();
+		class_scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		class_scroll.setViewportView(class_panel);
+		
+		
+		JPanel class_1 = new JPanel();
+		class_1.setLayout(new BoxLayout(class_1,BoxLayout.Y_AXIS));
+		Dimension class_size = new Dimension();
+		class_size.setSize(200,350);
+		class_1.setPreferredSize(class_size);
+		
+		
+		class1_Icon = new ImageIcon("src/img/class_1.png");
+		Image class1_Image = class1_Icon.getImage();
+		class1_Image = class1_Image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		class1_Icon = new ImageIcon(class1_Image);
+		class1_label = new JLabel(class1_Icon);
+		
+		class1_Intro = new ImageIcon("src/img/class1_intro.png");
+		Image class1_ItroImg = class1_Intro.getImage();
+		class1_ItroImg = class1_ItroImg.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		class1_Intro = new ImageIcon(class1_ItroImg);
+		
+		
+		class1_label.addMouseListener(this);
+		class_1.add(class1_label);
+		
+		JButton class1_btn = new JButton("Java 수업들으러 가기");
+		class1_btn.setPreferredSize(new Dimension(200,100));
+		class_1.add(class1_btn);
+		
+		
+		JPanel class_2 = new JPanel();
+		class_2.setLayout(new BoxLayout(class_2,BoxLayout.Y_AXIS));
+		class_2.setPreferredSize(class_size);
+		
+		ImageIcon class2_Icon = new ImageIcon("src/img/class_2.png");
+		Image class2_Image = class2_Icon.getImage();
+		class2_Image = class2_Image.getScaledInstance(200,200,Image.SCALE_SMOOTH);
+		class2_Icon = new ImageIcon(class2_Image);
+		JLabel class2_label = new JLabel(class2_Icon);
+		class_2.add(class2_label);
+		class2_label.addMouseListener(this);
+		JButton class2_btn = new JButton("C/C++수업들으러 가기");
+		class2_btn.setPreferredSize(new Dimension(200,100));
+		class_2.add(class2_btn);
+		
+		
+		JPanel class_3 = new JPanel();
+		class_3.setLayout(new BoxLayout(class_3,BoxLayout.Y_AXIS));
+		class_3.setPreferredSize(class_size);
+		
+		ImageIcon class3_Icon = new ImageIcon("src/img/class_3.png");
+		Image class3_Image = class3_Icon.getImage();
+		class3_Image = class3_Image.getScaledInstance(200,200,Image.SCALE_SMOOTH);
+		class3_Icon = new ImageIcon(class3_Image);
+		JLabel class3_label = new JLabel(class3_Icon);
+		class_3.add(class3_label);
+		class3_label.addMouseListener(this);
+		JButton class3_btn = new JButton("Node.js 수업들으러 가기");
+		class3_btn.setPreferredSize(new Dimension(200,100));
+		class_3.add(class3_btn);
+		
+		class_panel.add(class_1);
+		class_panel.add(class_2);
+		class_panel.add(class_3);
+		
+		
+		graphPanel = new JPanel();
+		GraphFrame graph = new GraphFrame("Graph");
+		graphPanel.add(graph.chartPanel);
+		
+		graphPanel2 = new JPanel();
+		GraphFrame2 graph2 = new GraphFrame2("Graph");
+		graphPanel2.add(graph2.chartPanel);
+		
+		changeGraphBtn = new JButton("공부시간 확인하기");
+		changeGraphBtn.addActionListener(this);
+		
+		
+		addGraph = new JPanel();
+		addGraph.setLayout(new FlowLayout());
+		JLabel timeAdd = new JLabel("공부시간 추가");
+		set_hour = new JTextField(2);
+		JLabel sep = new JLabel(":");
+		set_minutes = new JTextField(2);
+		add_button = new JButton("추가");
+		add_button.addActionListener(this);
+		
+		addGraph.add(timeAdd);
+		addGraph.add(set_hour);
+		addGraph.add(sep);
+		addGraph.add(set_minutes);
+		addGraph.add(add_button);
+		
+		
+		
+		
+		
+		
+		
+		JPanel chatPanel = new JPanel();
+		
+		ServerFrame serverFrame = new ServerFrame();
+		chatPanel.add(serverFrame.chatServer);
+		
+		
+		
+		
+		tab3.add(class_scroll);
+		tab3.add(graphPanel);
+		tab3.add(graphPanel2);
+		tab3.add(changeGraphBtn);
+		tab3.add(addGraph);
+		tab3.add(chatPanel);
+		
+		class_scroll.setBounds(5,5,1000,300);
+		graphPanel.setBounds(5,350,480,350);
+		graphPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		graphPanel2.setBounds(5,350,480,350);
+		graphPanel2.setBorder(BorderFactory.createLineBorder(Color.black));
+		chatPanel.setBounds(500,350,480,350);
+		chatPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		changeGraphBtn.setBounds(5,320,150,30);
+		addGraph.setBounds(200,315,250,50);
+		addGraph.setVisible(false);
+		
+			
+																															
+				
+																							
+																							
+																							
+																							
+																								
+																								
+																								
+																							
+		
+		//tab1 이미지
+		ImageIcon tab1_image = new ImageIcon("src/img/tab1Image.png");
+		Image tab1_imageChange = tab1_image.getImage();
+		tab1_imageChange = tab1_imageChange.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		tab1_image = new ImageIcon(tab1_imageChange);
+		
+		
+		
+		//tab2 이미지
+		ImageIcon tab2_image = new ImageIcon("src/img/tab2Image.png");
+		Image tab2_imageChange = tab2_image.getImage();
+		tab2_imageChange = tab2_imageChange.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		tab2_image = new ImageIcon(tab2_imageChange);
+		
+		
+		
+		//tab3 이미지
+		ImageIcon tab3_image = new ImageIcon("src/img/tab3Image.png");
+		Image tab3_imageChange = tab3_image.getImage();
+		tab3_imageChange = tab3_imageChange.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		tab3_image = new ImageIcon(tab3_imageChange);
+		
+		
+		
+		TP.addTab("Show",tab1_image,tab1);
+		TP.addTab("게시판",tab2_image,tab2);
+		TP.addTab("도움말",tab3_image,tab3);
+		TP.addChangeListener(this);
+		add(TP,BorderLayout.CENTER);
+		
+		setVisible(true);
+		useDB.connectDB();
+		StopWatch timer = new StopWatch("공부시간 측정");
+		timer.setVisible(true);
+		serverFrame.setServer();
+		Thread th = new Thread(serverFrame);
+		th.start();
+		
+		
+	}
+	
+
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object obj = e.getSource();
+		if(obj == write_board) {
+			new Notice_board(this);
+		}
+		else if ((obj == search_btn) && (search_com.getSelectedItem() !=null)) {
+			String find_range = search_com.getSelectedItem().toString();
+			notice_table.setNumRows(0); //테이블 초기화 후 추가
+			String find_keyword = search_tf.getText();
+			
+			useDB.keyword_selectDB("SELECT * FROM DB.TB WHERE "+ find_range +" LIKE '%"+find_keyword+"%'");
+			try {
+				System.out.println("Query OK");
+				while(useDB.rs.next()) {
+					String id = useDB.rs.getString("id");
+					String title = useDB.rs.getString("title");
+					String content = useDB.rs.getString("content");
+					Date date = useDB.rs.getDate("date");
+					String answer = useDB.rs.getString("answer");
+					Object data[] = {id,title,content,date,answer};
+					notice_table.addRow(data);
+					
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		else if (obj == link_btn) {
+			if (Desktop.isDesktopSupported()) {
+	            Desktop desktop = Desktop.getDesktop();
+	            try {
+	                URI uri = new URI("https://namu.wiki/w/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8");
+	                desktop.browse(uri);
+	            } catch (IOException ex) {
+	                ex.printStackTrace();
+	            } catch (URISyntaxException ex) {
+	                ex.printStackTrace();
+	            }
+			}
+		}
+		else if (obj == changeGraphBtn) {
+			String flag = changeGraphBtn.getText();
+			if(flag.equals("공부시간 확인하기"))
+			{
+				graphPanel.setVisible(false);
+				graphPanel2.setVisible(true);
+				addGraph.setVisible(true);
+				changeGraphBtn.setText("수업별 수강률 확인하기");
+			}
+			else if(flag.equals("수업별 수강률 확인하기"))
+			{
+				graphPanel.setVisible(true);
+				graphPanel2.setVisible(false);
+				addGraph.setVisible(false);
+				changeGraphBtn.setText("공부시간 확인하기");
+			}
+		}
+		else if (obj == add_button) {
+				String hour = set_hour.getText();
+				String minute = set_minutes.getText();
+				int thour = Integer.parseInt(hour);
+				int tminute = Integer.parseInt(minute);
+				int total = (thour*60) + tminute;
+				System.out.println("공부한 시간 : " + total + "분을 추가하겠습니다.");
+				useDB.graphInsertDB(total);
+		}
+		
+	}
+	
+	
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		JTabbedPane pane = (JTabbedPane)e.getSource();
+		int sel = pane.getSelectedIndex();
+		System.out.println(sel); //0,1,2
+		if(sel == 1) {
+			notice_table.setNumRows(0);
+			useDB.selectDB("SELECT * FROM DB.TB");
+			try {
+				
+				while(useDB.rs.next()) {
+					String id = useDB.rs.getString("id");
+					String title = useDB.rs.getString("title");
+					String content = useDB.rs.getString("content");
+					Date date = useDB.rs.getDate("date");
+					String answer = useDB.rs.getString("answer");
+					Object data[] = {id,title,content,date,answer};
+					notice_table.addRow(data);
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		
+		
+		
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		int row = main_Board.getSelectedRow();
+		System.out.println(main_Board.getValueAt(row,2));
+		String contents = (String) main_Board.getValueAt(row, 2);
+		String answer = (String) main_Board.getValueAt(row, 4);
+		System.out.println(contents);
+		System.out.println(answer);
+		new Contents_answer(contents,this);
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		JLabel la = (JLabel)e.getSource();
+		if(la == class1_label) 
+		{
+			la.setIcon(class1_Intro);
+		}
+		else if(la == class2_label) 
+		{
+			
+		}
+		else if(la == class3_label) 
+		{
+			
+		}
+		
+		
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		JLabel la = (JLabel)e.getSource();
+		if(la == class1_label) 
+		{
+			la.setIcon(class1_Icon);
+		}
+		else if(la == class2_label)
+		{
+			
+		}
+		else if(la == class3_label)
+		{
+			
+		}
+		
+		
+	}
+	
+	
+	public DefaultTableModel getTable() {
+		return notice_table;
+	}
+	
+	public static void main(String[] args) {
+		new MainUI("test1111");
+	}
+//	
+	
+}
+
+

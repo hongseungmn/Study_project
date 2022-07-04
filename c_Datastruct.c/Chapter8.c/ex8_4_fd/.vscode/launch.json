@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "/Users/hongseongmin/Documents/c_Datastruct.c/Chapter8.c/ex8_4_fd",
+      "environment": [],
+      "program": "/Users/hongseongmin/Documents/c_Datastruct.c/Chapter8.c/ex8_4_fd/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "lldb",
+      "externalConsole": true
+    }
+  ]
+}

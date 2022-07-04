@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키위</title>
+    <style>
+        #panel {
+            width:600px;
+            height:300px;
+            border:2px solid #999;
+            position: relative;
+        }
+
+        #bar {
+            position: absolute;
+            left:50px;
+            top: 190px;
+            width:500px;
+            height:20px;
+            background:#f00;
+        }
+        #kiwi {
+            position: absolute;
+            left:50px;
+            top:70px;
+        }
+        #nav {
+            text-align: center;
+            width:600px;
+            margin-top: 20px;
+        }
+        #btnStart, #btnStop {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        //전역 변수를 선언과 동시에 초기화
+        var $kiwi = null;
+        //이동할 거리
+        var step = 50;
+
+        var timerID =0;
+
+        $(document).ready(function() {
+
+            init();
+            initEvent();
+        });
+        //요소 초기화
+        function init() {
+            //키위 요소 찾아오기
+            $kiwi = $("#kiwi");
+        }
+
+        //이벤트 등록
+        function initEvent() {
+            //키위가 움직이는 이벤트를 등록
+            $("#btnStart").click(function() {
+                start()
+            });
+            //키위가 멈추는 이벤트를 등록
+            $("#btnStop").click(function() {
+                stop()
+            });
+        }
+
+        //키위 움직이기 타이머 실행
+        function start() {
+            if(timerID ==0) {
+                timerID = setInterval(function() {
+                    //키위 움직이기(0.1초마다 movekiwi() 호출)
+                    movekiwi();
+                },100);
+            }
+        }
+
+        //키위 멈추기 
+        function stop() {
+            clearInterval(timerID);
+            timerID =0;
+        }
+
+        //키위 움직이기
+        function movekiwi() {
+            //다음 키위의 위치
+            var x = $kiwi.position().left + step;
+            //키위 위치가 430을 넘는 경우, 키위 이동방향을 반대쪽으로 해주는 부분
+            if(x >=430) {
+                //.attr()함수는 선택자에 의해서 선택된 요소들 중에서 요소의 속성값을 가지고 오는 함수이다.
+                $kiwi.attr("src","images/mango.jpg");
+                step = -50;
+            }
+            //키위 위치가 50보다 작은 경우, 키위의 이동방향을 오른쪽 변경
+            if (x <50 ) {
+                //.attr()함수는 선택자에 의해서 선택된 요소들 중에서 요소의 속성값을 가지고 오는 함수이다.
+                $kiwi.attr("src","images/kiwi.jpg");
+                step = +50;
+            }
+            //키위 위치 설정
+            $kiwi.css("left",x);
+        }
+        
+    </script>
+</head>
+<body>
+    <div>
+        <div id = "panel">
+            <div id="bar"></div>
+                <img src="images/kiwi.jpg" id="kiwi">
+            </div>
+            <div id="nav">
+                <button id="btnStart">시작</button>
+                <button id="btnStop">멈춤</button>
+            </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* 공통 적용 서식*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+li {
+	list-style-type: none;
+}
+/* 헤더에 적용되는 서식 */
+header {
+	height: 166px;
+}
+.box {
+	width: 1100px;
+	margin: 0 auto;
+}
+#logo {
+	float: left;
+	margin: 80px 0 0 60px;
+}
+#menu {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+}
+#menu li {
+	display: inline-block;
+}
+#top_menu li {
+	margin: 30px 0 0 10px;
+}
+#main_menu li {
+	margin: 50px 0 0 80px;
+	font-family: "맑은고딕";
+	font-weight: bold;
+	font-size: 20px;
+}
+/* 메인 이미지에 적용되는 서식 */
+#main_image {
+	height: 312px;
+	background-image: url("./img/main_bg.png");
+	background-repeat: no-repeat;
+	background-position: top center;
+	text-align: center;
+	padding: 230px 0 0 750px;
+}
+/* 사이드바에 적용되는 서식 */
+aside {
+	width: 220px;
+	float: left;
+	margin: 70px 0;
+}
+aside .title1 {
+	padding: 12px;
+	background-color: #0ca9a3;
+	color: white;
+	font-size: 18px;
+}
+aside .comment {
+	padding: 20px 10px;
+	line-height: 150%;
+}
+aside .search input {
+	width: 160px;
+	height: 32px;
+	border: solid 1px black;
+	vertical-align: top;
+}
+aside .search button {
+	margin-left: 5px;
+	padding: 6px 10px;
+	border: solid 1px black;
+}

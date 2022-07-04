@@ -1,0 +1,30 @@
+package MainUI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import videoUI.JavaVideo;
+
+public class VideoPanel extends JFrame {
+	private int userIndex;
+	public VideoPanel(int userIndex) {
+		setTitle("Video");
+		this.userIndex = userIndex;
+		setSize(450,700);
+		setLocationRelativeTo(this);
+		setLayout(new BorderLayout());
+		setBackground(Color.orange);
+		JavaVideo javaVideo = new JavaVideo(userIndex);
+		this.add(,BorderLayout.CENTER);
+		setVisible(true);
+	}
+	
+	public void setPanel(int select) {
+		
+		
+	}
+	
+}

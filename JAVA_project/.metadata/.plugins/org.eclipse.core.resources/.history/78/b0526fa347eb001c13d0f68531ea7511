@@ -1,0 +1,52 @@
+package MainUI;
+
+import java.awt.BorderLayout;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import videoUI.C_Video;
+import videoUI.JavaVideo;
+import videoUI.Node_jsVideo;
+
+public class VideoPanel extends JFrame {
+	private int userIndex;
+	private C_Video cVideo;
+	private JavaVideo javaVideo;
+	private Node_jsVideo nodejsVideo;
+	public VideoPanel(int userIndex) {
+		setTitle("Video");
+		this.userIndex = userIndex;
+		setSize(450,700);
+		setLocation(1200,100);
+		setLayout(new BorderLayout());
+		setBackground(Color.orange);
+		javaVideo = new JavaVideo(userIndex);
+		this.add(javaVideo,BorderLayout.CENTER);
+		cVideo = new C_Video(userIndex);
+		this.add(cVideo,BorderLayout.CENTER);
+		cVideo.setVisible(false);
+		nodejsVideo = new Node_jsVideo(userIndex);
+		setVisible(true);
+	}
+	
+	public void setPanel(int select) {
+		if(select == 1) {
+			cVideo.setVisible(false);
+			javaVideo.setVisible(true);
+			
+		}
+		else if(select == 2) {
+			cVideo.setVisible(true);
+			javaVideo.setVisible(false);
+		}
+		else if(select ==3) {
+			
+		}
+		
+		
+	}
+	
+}

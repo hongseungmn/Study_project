@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트-3(jQuery)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //버튼에 그룹 이벤트 등록(On()를 이용한다.)
+            // 1 번째 방법
+            $("#btn").on("mouseover focus", function(){
+                alert("안녕하세요.");
+                console.log("이벤트 발생");
+            });
+            // 2 번째 방법
+            //$("#btn").on({
+            //    "mouseover focus" : function() {
+            //        alert("안녕하세요.");
+            //        console.log("이벤트 발생");
+            //    }
+            //});
+            // 3 번째 방법
+            //$("#btn").on({
+            //    "mouseover" : function(){
+            //        console.log("이벤트 발생");
+            //    },
+            //    "focus" : function(){
+            //        console.log("이벤트 발생");
+            //    }
+            //})
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">버튼</button>
+</body>
+</html>

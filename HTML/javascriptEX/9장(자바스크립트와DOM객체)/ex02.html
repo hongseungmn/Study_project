@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-2(요소접근)</title>
+    <style>
+        #container {
+            width:600px;
+            margin: 0 auto;
+        }
+        #prod-pic, #decs {
+            float:left;
+        }
+        #prod-pic img {
+            margin: 20px 20px auto 10px;
+        }
+        #earth {
+            width:300px;
+            height:300px;
+            box-shadow: 1px 1px 2px #eee;
+            outline: 1px dashed #eee;
+            outline-offset: -7px;
+        }
+        #small-pic {
+            margin-top:20px;
+            list-style: none;
+            padding:0%;
+        }
+        .small {
+            width:60px;
+            height:60px;
+        }
+        #small-pic img:hover {
+            cursor: pointer;
+        }
+        #decs {
+            width:300px;
+            padding-top: 20px;
+            margin-bottom:50px;
+        }
+        .bluetext {
+            color:blue;
+            font-weight:bold;
+        }
+        #decs button {
+            margin-top:20px;
+            margin-bottom:20px;
+            width:100%;
+            padding:10px;
+        }
+        #decs ul {
+            list-style: none;
+        }
+        #decs li {
+            font-size:0.9em;
+            line-height: 1.8em;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="heading">국회의사당</h1>
+        <div id="prod-pic">
+            <img src ="images/Earth.png" id="earth">
+            <div id="small-pic">
+                <img src ="images/fish1.png" id="small">
+                <img src ="images/fish2.png" id="small">
+                <img src ="images/kiwi.jpg" id="small">
+            </div>
+        </div>
+        <div id="decs">
+            <ul>
+                <li>물고기</li>
+                <li clas="bluetext">판매가 : 9000원</li>
+                <li>배송비 : 3000</li>
+                <li>적립금 : 1500</li>
+                <li>제조일자 : 2020.10.20</li>
+                <button>장바구니 담기</button>
+            </ul>
+            <a href="#" id ="view">상세설명 보기</a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>

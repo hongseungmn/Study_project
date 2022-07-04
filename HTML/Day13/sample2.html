@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h3>페이지 방문 시간 : 짝수이면 violet,홀수이면 lightskyblue로 배경 색을 설정</h3>
+	<br>
+	<script type="text/javascript">
+		var today;
+		today = new Date();
+		if(today.getSeconds() % 2 ==0)
+			document.body.style.backgroundColor="violet";
+		else 
+			document.body.style.backgroundColor="lightskyblue";
+
+		document.write("현재 시간은 ");
+		document.write(today.getHours(),"시 ");
+		document.write(today.getMinutes(),"분 ");
+		document.write(today.getSeconds(),"초 입니다");
+	</script>
+</body>
+</html>

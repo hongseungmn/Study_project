@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+	</section>
+	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.FileSystem"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="FileSystemImportWizard">
+		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
+		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/Users/hongseongmin/Downloads/src/img"/>
+			<item value="/Users/hongseongmin/Downloads/src/videoUI"/>
+			<item value="/Users/hongseongmin/Downloads/src/MainUI"/>
+			<item value="/Users/hongseongmin/Downloads/Swing_A (3)/src"/>
+			<item value="/Users/hongseongmin/Downloads/Swing_A (3)"/>
+			<item value="/Users/hongseongmin/Downloads/jfreechart-1.5.3 2/src/test/java/org/jfree/chart"/>
+		</list>
+	</section>
+</section>

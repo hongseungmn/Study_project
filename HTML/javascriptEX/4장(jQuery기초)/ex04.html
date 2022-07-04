@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 숨기기, 보이기 예제</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //글자 보이기 버튼을 눌렀을 때
+            $("#showText").click(function(){
+                $("div").show(); //div 영역의 내용을 보인다.
+            });
+        });
+        $(document).ready(function(){
+            //글자 숨기기 버튼을 눌렀을 때
+            $("#hideText").click(function(){
+                $("div").hide();//div 영역의 내용을 숨긴다.
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>안녕하세요. 초보입니다.</div>
+    <button id="showText">글자보이기</button>
+    <button id="hideText">글자숨기기</button>
+</body>
+</html>

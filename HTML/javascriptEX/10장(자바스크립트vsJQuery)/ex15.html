@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기 - eq(),get()의 차이점</title>
+    <style>
+        
+        div {
+            width: 50px;
+            height: 50px;
+            float: left;
+            background-color: brown;
+            margin: 10px;
+        }
+        
+    </style>
+
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //div 5개 인스턴스가 생성되고 div객체들을 배열로 저장하고 있다.
+            var $divList = $("div");
+            //배열은 0부터 시작을 하니 인덱스가 1이라면 2번째의 div만 가져오고 있다.
+            var $div_two = $divList.eq(1);
+            //eq()메서드는 리턴값이 div의 jQuery객체가 넘어오지만
+            //get() 메서드는 리턴값이 Element요소가 넘어오므로 
+            //스타일을 설정하고자 한다면 자바스크립트 방법으로 줘야 한다.
+            var $div_one = $divList.get(0);
+            $div_two.css("background","blue");
+            $div_one.style.border = "3px dashed blue";
+
+            //[ ] 로 인덱스를 주어 노드를 찾아서 다룰 수 있다.
+            var $div_five = $divList[4];
+            $div_five.style.backgroundColor = "yellow";
+        });
+    </script>
+</head>
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+    <span></span>
+</body>
+</html>

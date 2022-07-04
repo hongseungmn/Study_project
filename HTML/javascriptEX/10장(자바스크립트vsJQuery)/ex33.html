@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성 -jQuery로 특정 노드의 이전 노드로 이동하기(hasClass(),insertBefore()</title>
+    <style>
+        body {
+            font-size: 15px;
+            font-family: "맑은 고딕";
+        }
+        ul,li {
+            border: 3px solid gray;
+            margin:10px;
+
+        }
+        ul {
+            padding: 10px;
+        }
+        li.select{
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var cnt =0;
+            var $menu = $("#menu");
+            
+            //li를 클릭을 했을 때 만약 select클래스 선택자를 가지고 있으면
+            //익명함수를 종료하고 그게 아니라면 select클래스를 가지고 있는
+            //li객체 이전,이후으로 노드를 이동시키는 코드이다.
+            $("#menu li").click(function() {
+                if($(this).hasClass("select") ==true){
+                    return;
+                }
+                //이전으로 이동(insertBefore())
+                //$(this).insertBefore($(".select"));
+                //이후로 이동(insertAfter())
+                $(this).insertAfter($(".select"));
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btnAdd">추가하기</button>
+    <ul id="menu">
+        <li>메뉴 1</li>
+        <li>메뉴 2</li>
+        <li>메뉴 3</li>
+        <li>메뉴 4</li>
+        <li class="select">메뉴 5</li>
+        <li>메뉴 6</li>
+    </ul>
+</body>
+</html>

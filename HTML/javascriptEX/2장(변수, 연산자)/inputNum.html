@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 입력</title>
+</head>
+<body>
+    <script>
+        //prompt를 통해서 입력을 받으면 string타입으로 된다
+        var input = prompt("숫자를 입력해주세요","숫자")
+        alert(typeof(input))
+        //Number()를 통해서 문자열을 숫자로 바꾸어 주고 있다.
+        var numType = Number(input);
+        //typeof가 number로 변환은 시켜주지만 그 뜻은 변하지 않는다.
+        alert(typeof(numType))
+        alert(numType)
+        //Nan(Not a number) 숫자가 될 수 없는 것을 뜻한다.
+
+    </script>
+</body>
+</html>

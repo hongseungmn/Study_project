@@ -1,0 +1,57 @@
+package MainUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class addUser extends JFrame implements ActionListener {
+	private JTextField id;
+	private JTextField pw;
+	private JTextField email;
+	private JButton addCheck;
+	private DB_Mysql useDB = new DB_Mysql();
+	public addUser() {
+		setTitle("add User");
+		setSize(300,400);
+		setLocationRelativeTo(this);
+		setLayout(new BorderLayout());
+		
+		JPanel inputText = new JPanel();
+		inputText.setLayout(new GridLayout(6,2));
+		id = new JTextField(10);
+		pw = new JTextField(10);
+		email = new JTextField(10);
+		inputText.add(new JLabel(" 아이디"));
+		inputText.add(id);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		inputText.add(new JLabel(" 비밀번호"));
+		inputText.add(pw);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		inputText.add(new JLabel(" 이메일"));
+		inputText.add(email);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		
+		addCheck = new JButton("추가");
+		addCheck.addActionListener(this);
+		
+		add(inputText,BorderLayout.CENTER);
+		add(addCheck,BorderLayout.SOUTH);
+		
+		
+		setVisible(true);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		Object obj = e.getSource();
+		if(obj == addCheck) {
+			
+		}
+		
+	}
+
+}

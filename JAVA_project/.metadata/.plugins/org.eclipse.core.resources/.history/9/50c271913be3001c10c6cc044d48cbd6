@@ -1,0 +1,40 @@
+package MainUI;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class addUser extends JFrame {
+	private JTextField id;
+	private JTextField pw;
+	private JTextField email;
+	public addUser() {
+		setTitle("add User");
+		setSize(300,400);
+		setLocationRelativeTo(this);
+		setLayout(new BorderLayout());
+		
+		JPanel inputText = new JPanel();
+		inputText.setLayout(new GridLayout(6,2));
+		id = new JTextField(10);
+		pw = new JTextField(10);
+		email = new JTextField(10);
+		inputText.add(new JLabel(" 아이디"));
+		inputText.add(id);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		inputText.add(new JLabel(" 비밀번호"));
+		inputText.add(pw);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		inputText.add(new JLabel(" 이메일"));
+		inputText.add(email);
+		inputText.add(new JPanel());
+		inputText.add(new JPanel());
+		
+		add(inputText);
+		
+		
+		setVisible(true);
+	}
+
+}

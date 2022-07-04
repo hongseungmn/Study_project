@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script type="text/javascript" src="./myscript.js">
+		function mouse_over(obj)
+		{
+			obj.src = "./img/IU_2.jpeg";
+			obj.width="300";
+			obj.height="400";
+		}
+		function mouse_out(obj)
+		{
+			obj.src = "./img/IU_1.jpeg";
+			obj.width="300";
+			obj.height="400"
+		}
+	</script>
+</head>
+<body>
+<h3>사진에 마우스를 갖다 대면 사진이 변경</h3>
+<hr>
+<img src="./img/IU_1.jpeg" width="300" height="400" onmouseover="mouse_over(this)" onmouseout="mouse_out(this)">
+<br>
+<a href="javascript:alert('컴퓨터시스템과 짱')">클릭해보세요</a>
+<br>
+<script type="text/javascript">
+	document.write("컴퓨터시스템과<br>");
+	document.write("<h1>환영합니다.</h1>");
+	var result1;
+	var result2;
+	result1 = parseInt(prompt("첫 번째 숫자를 입력하세요"));
+	result2 = parseInt(prompt("두 번째 숫자를 입력하세요"));
+	alert(result1+result2);
+</script>
+
+</body>
+</html>
+

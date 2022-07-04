@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h3>CSS 스타일 동적 변경</h3>
+<hr>
+<script type="text/javascript">
+	function change() 
+	{
+		var span;
+		span = document.getElementById("mySpan");
+		span.style.color = "green";
+		span.style.fontSize = "30px";
+		span.style.display = "block";
+		span.style.border = "solid 3px blue"
+	}
+
+	function recovery()
+	{
+		var span;
+		span = document.getElementById("mySpan");
+		span.style.color = "red";
+		span.style.fontSize="15px";
+		span.style.display = "inline";
+		span.style.border = "none"
+	}
+</script>
+<p style="color:blue">
+	이것은
+		<span id="mySpan" style="color:red">
+			문장입니다. 
+		</span>
+</p>
+
+<input type="button" name="changeStyle" value="스타일변경" onclick="change()">
+<input type="button" name="recoveryStyle" value="원래대로" onclick="recovery()">
+</body>
+</html>

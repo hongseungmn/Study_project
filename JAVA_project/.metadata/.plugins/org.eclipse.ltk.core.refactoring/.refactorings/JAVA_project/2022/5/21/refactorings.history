@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ChatFrame.java&apos; to &apos;EX/src/(default package)&apos;&#x0A;- Original project: &apos;JAVA_project&apos;&#x0A;- Destination element: &apos;EX/src/(default package)&apos;&#x0A;- Original element: &apos;swing.components.ChatFrame.java&apos;" description="Copy compilation unit" destination="=EX/src&lt;" element1="/src&lt;swing.components{ChatFrame.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1652937397140" units="1" version="1.0"/>
+</session>

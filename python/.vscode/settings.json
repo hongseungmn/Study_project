@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "Part_9(실습)"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

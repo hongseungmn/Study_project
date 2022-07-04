@@ -1,0 +1,41 @@
+package MainUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Content extends JFrame implements ActionListener {
+	private JButton btn_answer;
+	private JTextArea ta_content;
+	private DB_Mysql user_DB = new DB_Mysql();
+	private MainUI mainUI;
+	public Content(String contents,MainUI mainUI) {
+		setTitle("Answer");
+		setSize(500,300);
+		setLocationRelativeTo(this);
+		setLayout(new BorderLayout());
+		this.mainUI = mainUI;
+		
+		ta_content = new JTextArea(3,30);
+		JPanel North = new JPanel();
+		ta_content.setText(contents);
+		North.add(ta_content);
+		
+		add(North,BorderLayout.NORTH);
+		
+		JTextArea ta_answer = new JTextArea(3,20);
+		add(ta_answer,BorderLayout.CENTER);
+		btn_answer = new JButton("답변작성");
+		add(btn_answer,BorderLayout.SOUTH);
+		btn_answer.addActionListener(this);
+		user_DB.connectDB();
+		setVisible(true);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+
+}
