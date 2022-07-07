@@ -11,12 +11,29 @@
 <script>
     // 라우터에서 쿼리스트링으로 값을 가져옴
     let name = '<%= name %>';  // ssoid 
+    let getjson = [];
     console.log(`===> name: ${name}`);
     let data = {id : 1}
     console.log(data);
     $(document).ready(function() {
+        $.ajax({
+            url : "/get-dbAll",
+            type : "get",
+            dataType : 'json',
+            async : false,
+            success : function(getData) {
+                getjson = getData[0];
+                
+                console.log(getjson);
+                console.log("데베 모든 데이터 출력=============>");
+                $("#db_table").append(`<tr><td>${getData[0].SN_ID}</td><td>${getData[0].SN_NAME}</td></tr>`);
+                $("#db_table").append("<tr><td>",2,"</td><td>",JSON.stringify(getData[0]),"</td></tr>");
+                $("#db_table").append("<tr><td>",3,"</td><td>",JSON.stringify(getData[0]),"</td></tr>");
+            }
+        })
         $("#getDB").click(function() {
-            alert("push");
+            console.log(getjson);
+            
             $.ajax({
                 url : "/get-db", 
                 type : 'post',
@@ -25,7 +42,7 @@
                 async:false,
                 success: function(getData) {
                 console.log("getData ============>",getData[0]);
-                $("#loadData").text(getData);
+                $("#loadData").text(JSON.stringify(getData[0]));
                 },
                 error : (req, status, err) => {
                 console.error(`디비 테이블 가져오기 에러${req.status, req.responseText, err}`);
@@ -40,5 +57,12 @@
 <h1>hihi</h1>
 <div><input type="button" id="getDB" value="데이터 가져오기"></div>
 <h1 id="loadData"></h1>
+<form>
+    <table id="db_table" border="solid 1px">
+        <tbody>
+        <th>index</th><th>name</th>
+        </tbody>
+    </table>
+</form>
 </body>
 </html>

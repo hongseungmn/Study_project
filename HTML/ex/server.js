@@ -44,3 +44,7 @@
     console.log("server- body",body);
     return db.getName(conn, res, body);
     })
+
+    app.get('/get-dbAll',(req,res) => {
+        return db.getAll(conn,res);
+    })
