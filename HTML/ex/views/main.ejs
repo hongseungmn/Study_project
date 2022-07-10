@@ -12,8 +12,11 @@
     // 라우터에서 쿼리스트링으로 값을 가져옴
     let name = '<%= name %>';  // ssoid 
     let getjson = [];
+    
     console.log(`===> name: ${name}`);
-    let data = {id : 1}
+
+    let data = {id : 1};
+    
     console.log(data);
     $(document).ready(function() {
         $.ajax({
@@ -22,18 +25,20 @@
             dataType : 'json',
             async : false,
             success : function(getData) {
-                getjson = getData[0];
+                getjson = getData;
                 
                 console.log(getjson);
                 console.log("데베 모든 데이터 출력=============>");
-                $("#db_table").append(`<tr><td>${getData[0].SN_ID}</td><td>${getData[0].SN_NAME}</td></tr>`);
-                $("#db_table").append("<tr><td>",2,"</td><td>",JSON.stringify(getData[0]),"</td></tr>");
-                $("#db_table").append("<tr><td>",3,"</td><td>",JSON.stringify(getData[0]),"</td></tr>");
             }
-        })
+            
+        });
+        for (let i=0; i<getjson.length;i++){
+            $("#db_table").append(`<tr><td>${getjson[i].SN_ID}</td><td>${getjson[i].SN_NAME}</td></tr>`);
+        }
         $("#getDB").click(function() {
             console.log(getjson);
-            
+            let inputData = $("#inputData").data;
+            console.log(`===> inputData : ${inputData}`);
             $.ajax({
                 url : "/get-db", 
                 type : 'post',
@@ -55,7 +60,7 @@
 </head>
 <body>
 <h1>hihi</h1>
-<div><input type="button" id="getDB" value="데이터 가져오기"></div>
+<div><input type="text" id="inputData" size="10"><input type="button" id="getDB" value="데이터 가져오기"></div>
 <h1 id="loadData"></h1>
 <form>
     <table id="db_table" border="solid 1px">
