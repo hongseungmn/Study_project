@@ -12,7 +12,7 @@
     // 라우터에서 쿼리스트링으로 값을 가져옴
     let name = '<%= name %>';  // ssoid 
     let getjson = [];
-    
+    let testData = [];
     console.log(`===> name: ${name}`);
 
     let data = {id : 1};
@@ -37,23 +37,65 @@
         }
         $("#getDB").click(function() {
             console.log(getjson);
-            let inputData = $("#inputData").data;
+            let inputData = $("#inputData").val();
+            //let inputData = document.getElementById('inputData').value;
             console.log(`===> inputData : ${inputData}`);
+            //$.ajax({
+            //    url : "/get-db", 
+            //    type : 'post',
+            //    data: {"id" : 1},
+            //    dataType: 'json',
+            //    async:false,
+            //    success: function(getData) {
+            //    console.log("getData ============>",getData[0]);
+            //    $("#loadData").text(JSON.stringify(getData[0]));
+            //    },
+            //    error : (req, status, err) => {
+            //    console.error(`디비 테이블 가져오기 에러${req.status, req.responseText, err}`);
+            //    }
+            //});
             $.ajax({
-                url : "/get-db", 
+                url : '/get-db',
                 type : 'post',
-                data: {"id" : 1},
-                dataType: 'json',
-                async:false,
-                success: function(getData) {
-                console.log("getData ============>",getData[0]);
-                $("#loadData").text(JSON.stringify(getData[0]));
+                data : {'keyWord' : inputData},
+                dataType : 'json',
+                async : false,
+                success : (getData)=>{
+                    testData = getData
+                    console.log("getData ==========>",testData[0]);
+                    for(let i =0;i<testData.length;i++){
+                        $('#searchData').append(JSON.stringify(testData[i]));
+                        $('#searchData').append("<br>");
+                    }
+                    
                 },
-                error : (req, status, err) => {
-                console.error(`디비 테이블 가져오기 에러${req.status, req.responseText, err}`);
+                error : (req,status,err) => {
+                    //console.error(`디비 테이블 가져오기 에러 ${req.status,err}`);
                 }
             });
         });
+        $("#inputData").keyup(function() {
+            let inputData = $("#inputData").val();
+            $.ajax({
+                url : '/get-db',
+                type : 'post',
+                data : {'keyWord' : inputData},
+                dataType : 'json',
+                async : false,
+                success : (getData)=>{
+                    testData = getData
+                    console.log("getData ==========>",testData[0]);
+                    for(let i =0;i<testData.length;i++){
+                        $('#loadData').text(JSON.stringify(testData[i]));
+                        $('#loadData').append("<br>");
+                    }
+                    
+                },
+                error : (req,status,err) => {
+                    //console.error(`디비 테이블 가져오기 에러 ${req.status,err}`);
+                }
+            });
+        })
     });
 
 </script>
@@ -69,5 +111,8 @@
         </tbody>
     </table>
 </form>
+<p>
+    검색한 데이터 값 : <h5 id="searchData"></h5>
+</p>
 </body>
 </html>
