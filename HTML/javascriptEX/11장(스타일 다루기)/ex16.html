@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성값 설정-1</title>
+</head>
+<style>
+    body {
+        font-size : 25px;
+    }
+    .content {
+        text-align: center;
+    }
+</style>
+<script src="libs/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        let $image = $("#image");
+        let flag = true; //flag변수
+
+        $image.click(function(){
+            flag = !flag; 
+            if(flag){
+                //attr()로 속성의 값을 설정하고 있다.
+                $image.attr("src","img/fish2.png");
+            }
+            else {
+                $image.attr("src","img/fish1.png");
+            }
+        });
+    });
+</script>
+<body>
+    <img src="./img/fish1.png" id="image">
+    
+</body>
+</html>
