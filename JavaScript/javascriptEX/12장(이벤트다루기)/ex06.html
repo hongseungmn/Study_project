@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 멈추기</title>
+    <style>
+        body {
+            font-size: 30px;
+        }
+        #bten1, #btn2 {
+            font-size:25px;
+        }
+    </style>
+</head>
+<script src="libs/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // panel 클릭 이벤트 리스너를 등록
+        $("#panel").click(function(e){
+            console.log("panel에 등록된 클릭 이벤트");
+            //모든 이벤트가 버블링이 발생하는 것이 아니다.
+            //bubbles라는 프로퍼티 값이 true라면 버블링이 발생하는 태그다
+            console.log("panel bubbles : " + e.bubbles);
+        });
+        $("#btn1").click(function(e){
+            console.log("btn1 버블링 처리");
+        });
+        $("#btn2").click(function(e){
+            console.log("btn2 버블링 중지");
+            console.log("btn2 bubbles : " + e.bubbles);
+            //버블링 중지 메서드 호출
+            e.stopPropagation();
+        });
+    });
+</script>
+<body>
+    <div id="panel">
+        <button id="btn1">버블링처리</button>
+        <button id="btn2">버블링중지</button>
+    </div>
+</body>
+</html>

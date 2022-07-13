@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용(버블링활용방법)</title>
+    <style>
+        body {
+            font-size: 30px;
+        }
+        #add {
+            font-size: 30px;
+        }
+        ul {
+            border: 1px solid black;
+        }
+        ul li {
+            border: 1px solid red;
+            margin: 20px;
+        }
+    </style>
+</head>
+<script src="libs/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let $menu = $(".menu");
+        let cnt = 5; //카운트 변수 추가
+
+        $("#add").click(function(e){
+            cnt++; //카운트 증가
+            //동적으로 신규 메뉴 항목 생성
+            let $newItem = $("<li> 메뉴"+ cnt + "</li>")
+            // 동적으로 메뉴 추가
+            $menu.append($newItem);
+        });
+        //메뉴 항목에 틀릭 이벤트 등록
+        // ul태그에만 이벤트 리스너를 등록을 하였다
+        //동적으로 추가되는 메뉴항목에 대한 버블링을 활용하여 이벤트 리스너를 실행하게 된다.
+        //버블링으로 가능한 코드가 되고 아룰러  코드의 효율성이 좋아진다.
+        $(".menu").on("click","li",function(e){
+            alert($(this).html());
+        });
+    });
+</script>
+<body>
+    <div>
+        <button id="add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>
