@@ -5,7 +5,7 @@ from tkinter import *
 window = Tk()
 window.title("계산기")
 
-display = Entry(window, width=33,bg = "yellow")
+display = Entry(window, width=33,bg = "yellow",fg="black")
 #사용자로부터 수식을 입력받고 계산 결과를 보여주는 엔트리 위젯 열 병합으로 처리
 display.grid(row =0 ,column=0, columnspan=5)
 
@@ -16,6 +16,22 @@ button_list = [
     "1","2","3","-"," ",
     "0",".","=","+"," ",
 ]
+
+# 함수 정의
+def click(key):
+    # key값이 = 이라면 계산
+    if key == "=":
+        # eval() 는 사용자가 "2","+","3"을 클릭하면 문자열을 생성한다.
+        # 2+3으로 숫자로 변환하여 계산하여 준다.
+        result = eval(display.get())
+        s =str(result)
+        #결과를 표식을 함
+        display.insert(END,"=" + s)
+    # 매개변수가 값이 "C"라면 엔트리의 값을 다 지워야 한다.
+    elif key=="C":
+        display.delete(0,END)
+    else:
+        display.insert(END,key)
 
 row_index = 1
 col_index = 0
