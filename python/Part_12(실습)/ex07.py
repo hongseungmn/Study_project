@@ -8,5 +8,6 @@ canvas = Canvas(window,width=500,height=500,bg="white")
 canvas.pack()
 
 #선을 그려본다
-canvas.create_line(0,0,500,500)
+canvas.create_line(0,0,500,500,fill="BLUE")
+canvas.create_line(0,0,500,0,fill="RED",width=5)
 window.mainloop()
