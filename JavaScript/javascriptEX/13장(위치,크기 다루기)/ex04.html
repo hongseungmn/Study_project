@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지역좌표 노드 구하기(position()활용)</title>
+    <title>지역좌표 노드 설정하기(css()활용)</title>
     <style>
         * {
             margin:0;
@@ -13,11 +13,12 @@
         body {
             font-size: 20px;
         }
-        #info {
-            border: 1px solid black;
-            height: 30px;
-            margin:50px 0 0 100px;
-            width: 500px;
+        #btnAlign {
+            position:absolute;
+            left:100px;
+            top:50px;
+            width:100px;
+            height:30px;
         }
         #parent1 {
             position:absolute;
@@ -82,9 +83,7 @@
     </script>
 </head>
 <body>
-    <div id="info">
-        위치 값 출력
-    </div>
+    <button id="btnAlign">정렬</button>
     <div id="parent1">
         <div id="gigu1" class="gigu">
             <p>1</p>
