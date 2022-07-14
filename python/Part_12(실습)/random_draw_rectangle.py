@@ -11,6 +11,7 @@ canvas.pack()
 color = ["red","orange","black","yellow","blue","violet","green"]
 
 def draw_rect():
+    canvas.delete(ALL)
     x = random.randint(0,600)
     y = random.randint(0,500)
     w = random.randrange(100)
@@ -19,7 +20,10 @@ def draw_rect():
     # 랜덤하게 생성을 해준다.
     canvas.create_rectangle(x,y,w,h,fill=random.choice(color))
 
-for i in range(10):
-    draw_rect()
+# for i in range(10):
+#     draw_rect()
+
+button = Button(window, text="사각형 그리기",width=20,height=5,command=draw_rect)
+button.pack()
 
 window.mainloop()
