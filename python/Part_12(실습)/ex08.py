@@ -32,4 +32,7 @@ canvas.delete(ALL)
 # 사각형에 내접한 원 그리기
 canvas.create_arc(10,10,100,150,extent=90,fill="red",outline="yellow",width=5)
 
+#타원 그리기
+canvas.create_oval(50,50,250,350)
+
 window.mainloop()
