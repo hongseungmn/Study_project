@@ -17,6 +17,9 @@ line2 = canvas.create_line(0,0,500,0,fill="RED",width=5)
 #line1의 좌표를 변경한다
 canvas.coords(line1,250,0,250,0)
 
+#line2에 색상을 변경한다
+canvas.itemconfig(line2,fill="orange")
+
 rect1 = canvas.create_rectangle(50,50,200,200,fill="yellow")
 rect2 = canvas.create_rectangle(200,200,300,400,fill="red",outline="blue",width=10)
 window.mainloop()
