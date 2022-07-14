@@ -68,9 +68,14 @@
             $(".gigu").click(function(e) {
                 // 클릭한 물고기
                 $selectedGigu = $(this);
-                // 위치 구하기
+                // 위치 구하기(position()를 통하여 위치값 속성을 가지고 있는 객체 pos에 저장)
                 let pos = $selectedGigu.postion();
-            })
+                let str="id = " + $selectedGigu.attr("id") + 
+                ", left = " + pos.left + ", top = " + pos.top;
+
+                //정보 출력
+                $info.html(str);
+            });
         });
     </script>
 </head>
