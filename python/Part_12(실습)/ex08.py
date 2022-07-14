@@ -30,6 +30,6 @@ canvas.delete(rect1)
 canvas.delete(ALL)
 
 # 사각형에 내접한 원 그리기
-canvas.create_arc(10,10,100,150,extent=90)
+canvas.create_arc(10,10,100,150,extent=90,fill="red",outline="yellow",width=5)
 
 window.mainloop()
