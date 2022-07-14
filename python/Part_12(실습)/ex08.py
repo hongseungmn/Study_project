@@ -35,4 +35,7 @@ canvas.create_arc(10,10,100,150,extent=90,fill="red",outline="yellow",width=5)
 #타원 그리기
 canvas.create_oval(50,50,250,350)
 
+#다각형 그리기
+canvas.create_polygon(0,0,100,100,70,70,fill="blue")
+
 window.mainloop()
