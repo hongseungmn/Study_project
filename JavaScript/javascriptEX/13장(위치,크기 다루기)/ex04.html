@@ -64,21 +64,21 @@
     <script src ="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            let $info = $("#info");
-            //gigu에 클릭 이벤트를 등록
-            $(".gigu").click(function(e) {
-                // 클릭한 물고기
-                $selectedGigu = $(this);
-                // 위치 구하기(position()를 통하여 위치값 속성을 가지고 있는 객체 pos에 저장)
-                let pos = $selectedGigu.postion();
-                //id, left, top, 부모id값을 문자열로 만들기
-                let str="id = " + $selectedGigu.attr("id") + 
-                ", left = " + pos.left + ", top = " + pos.top + 
-                ", 부모 id = " + $selectedGigu.offsetPatent().attr("id");
-
-                //정보 출력
-                $info.html(str);
-            });
+            $("#btnAlign").click(function(e){
+                //시작위치를 설정하기 위한 변수
+                let startX = 50;
+                let startY = 50;
+                $(".gigu").each(function(index){
+                    //현재 물고기의 위치를 설정
+                    $(this).css({
+                        left: startX,
+                        top: startY
+                    });
+                });
+                startX +=50;
+                startY += 50;
+                
+            })
         });
     </script>
 </head>
