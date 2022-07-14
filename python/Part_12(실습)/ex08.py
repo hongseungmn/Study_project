@@ -22,4 +22,14 @@ canvas.itemconfig(line2,fill="orange")
 
 rect1 = canvas.create_rectangle(50,50,200,200,fill="yellow")
 rect2 = canvas.create_rectangle(200,200,300,400,fill="red",outline="blue",width=10)
+
+#rect1을 삭제해보기
+canvas.delete(rect1)
+
+#캔버스에 그려진 선, 도형을 다 삭제하기
+canvas.delete(ALL)
+
+# 사각형에 내접한 원 그리기
+canvas.create_arc(10,10,100,150,extent=90)
+
 window.mainloop()
