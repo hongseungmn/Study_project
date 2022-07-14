@@ -13,6 +13,8 @@ canvas.create_line(0,0,500,500,fill="BLUE")
 canvas.create_line(0,0,500,0,fill="RED",width=5)
 
 #사각형을 그려본다.
+# 사각형에서 fill은 채우기 색상이고, width는 바깥선의 굵기가 되고
+# outline 값은 바깥선의 색상이 된다.
 canvas.create_rectangle(50,50,200,200,fill="yellow")
-canvas.create_rectangle(200,200,300,400,fill="red")
+canvas.create_rectangle(200,200,300,400,fill="red",outline="blue",width=10)
 window.mainloop()
