@@ -13,9 +13,6 @@
         body {
             font-size: 20px;
         }
-        #info {
-            border:2px solid black;
-        }
         #parent1 {
             position:absolute;
             border: 1px solid black;
@@ -23,65 +20,30 @@
             height: 400px;
             left:100px;
             top:100px;
-            
-        }
-        .gigu {
-            position: absolute;
-            width:120px;
-        }
-        .gigu p {
-            position: absolute;
-            margin-top:20px;
-            text-align: center;
-            width: 100%;
         }
         #gigu1 {
+            position: absolute;
             left:50px;
             top:100px;
-        }
-        #gigu2 {
-            left:150px;
-            top:200px;
-        }
-        #gigu3 {
-            left:180px;
-            top:50px;
-        }
-        #gigu4 {
-            left:350px;
-            top:200px;
-        }
-        #gigu5 {
-            left:50px;
-            top:300px;
         }
         
     </style>
     <script src ="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            let $info = $("#info");
-            let $selectedgigu = null;
-            //물고기에 이벤트 등록
-            $(".gigu").click(function(e){
-                //클릭한 물고기
-                $selectedgigu = $(this);
-                let strID = $selectedgigu.attr("id");
+            let $gigu = $("#gigu");
+            //parent1에 클릭 이벤트 등록
+            $("#parent1").click(function(e){
+                //클릭한 지점의 전역 좌표를 구하는 코드
+                let left = e.pageX;
+                let top = e.pageY;
 
-                //지역좌표 위치값 구하기
-                let localPos = $selectedgigu.position();
-                let str = "id : " = strID + ", 지역좌표 left : " 
-                + localPos.left + ", top : " + localPos.top + "<br>";
-
-                //전역 좌표 위치값 구하기
-                let glovalPos = $selectedgigu.offset();
-                str += "id : " + strID +", 전역좌표 left : " 
-                + glovalPos.left + ", top : " + glovalPos.top;
-
-                $info.html(str);
-
+                //전역 위치 설정하기
+                $gigu.offset({
+                    left: left,
+                    top: top
+                })
             });
-
         });
     </script>
 </head>
