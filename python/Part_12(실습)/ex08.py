@@ -36,6 +36,9 @@ canvas.create_arc(10,10,100,150,extent=90,fill="red",outline="yellow",width=5)
 canvas.create_oval(50,50,250,350)
 
 #다각형 그리기
-canvas.create_polygon(0,0,100,100,70,70,fill="blue")
+canvas.create_polygon(10,10,150,110,250,20,fill="blue")
+
+#글자 나타내기
+canvas.create_text(100,350,text="안녕하세요",font=("고딕 15 bold"))
 
 window.mainloop()
