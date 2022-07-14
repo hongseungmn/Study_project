@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지역좌표 노드 설정하기(css()활용)</title>
+    <title>전역 위치 구하기(offset()활용)</title>
     <style>
         * {
             margin:0;
@@ -13,12 +13,8 @@
         body {
             font-size: 20px;
         }
-        #btnAlign {
-            position:absolute;
-            left:100px;
-            top:50px;
-            width:100px;
-            height:30px;
+        #info {
+            border:2px solid black;
         }
         #parent1 {
             position:absolute;
@@ -64,26 +60,33 @@
     <script src ="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            $("#btnAlign").click(function(e){
-                //시작위치를 설정하기 위한 변수
-                let startX = 50;
-                let startY = 50;
-                $(".gigu").each(function(index){
-                    //현재 물고기의 위치를 설정
-                    $(this).css({
-                        left: startX,
-                        top: startY
-                    });
-                });
-                //50만큼의 위치가 이동
-                startX +=50;
-                startY += 50;
+            let $info = $("#info");
+            let $selectedgigu = null;
+            //물고기에 이벤트 등록
+            $(".gigu").click(function(e){
+                //클릭한 물고기
+                $selectedgigu = $(this);
+                let strID = $selectedgigu.attr("id");
+
+                //지역좌표 위치값 구하기
+                let localPos = $selectedgigu.position();
+                let str = "id : " = strID + ", 지역좌표 left : " 
+                + localPos.left + ", top : " + localPos.top + "<br>";
+
+                //전역 좌표 위치값 구하기
+                let glovalPos = $selectedgigu.offset();
+                str += "id : " + strID +", 전역좌표 left : " 
+                + glovalPos.left + ", top : " + glovalPos.top;
+
+                $info.html(str);
+
             });
+
         });
     </script>
 </head>
 <body>
-    <button id="btnAlign">정렬</button>
+    <div id="info">전역 위치 값 출력</div>
     <div id="parent1">
         <div id="gigu1" class="gigu">
             <p>1</p>
