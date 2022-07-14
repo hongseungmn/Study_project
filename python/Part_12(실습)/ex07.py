@@ -14,4 +14,5 @@ canvas.create_line(0,0,500,0,fill="RED",width=5)
 
 #사각형을 그려본다.
 canvas.create_rectangle(50,50,200,200,fill="yellow")
+canvas.create_rectangle(200,200,300,400,fill="red")
 window.mainloop()
