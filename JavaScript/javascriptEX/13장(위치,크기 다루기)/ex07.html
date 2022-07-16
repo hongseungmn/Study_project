@@ -43,8 +43,18 @@
             let $info = $("#info");
             let $gigu = $("#gigu");
 
+            //4가지 종류에 대한 크기 구하는 코드
             let str = "기본크기 width : " + $gigu.width() + ", height : " + $gigu.height() + "<br/>";
+            str += "기본크기 + padding : " + $gigu.innerWidth() + ", height : " + $gigu.innerHeight() + "<br/>";
+            str += "기본크기 + padding + border : : " + $gigu.outerWidth() + ", height : " + $gigu.outerHeight() + "<br/>";
+            str += "기본크기 + padding + border + margin : : " + $gigu.outerWidth(true) + ", height : " + $gigu.outerHeight(true) + "<br/>";
 
+            //지역좌표, 전역좌표 구하기
+            let localPos = $gigu.position();
+            str +="지역좌표 left : " + parseInt(localPos.left) + ", top : " +parseInt(localPos.top) + "<br/>";
+
+            let globalPos = $gigu.offset();
+            str +="전역좌표 left : " + parseInt(globalPos.left) + ", top : " + parseInt(globalPos.top) + "<br/>";
             $info.html($info.html() + str);
         }
     </script>

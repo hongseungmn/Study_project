@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기 다루기 - 변경</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font-size: 20px;
+        }
+        #move
+        #parent1 {
+            position:absolute;
+            border: 1px solid black;
+            width: 500px;
+            height: 400px;
+            left:50px;
+            top:50px;
+        }
+        #gigu {
+            position: absolute;
+            padding: 30px;
+            margin: 50px;
+            left:50px;
+            top:100px;
+            border: 20px solid red;
+        }
+        
+        #move {
+            position:absolute;
+            left:50px;
+            top:30px;
+        }
+    </style>
+    <script src ="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let $gigu = $("#gigu");
+            //move에 클릭이벤트 등록
+            $("#move").click(function(e){
+                //물고기가 이동할 x좌표를 구하고 있는 코드
+                //물고기가 이동할 부분에서는 어느 부분으로 이동하느느지를 확인하고 그 부분에 대한 마진을 빼줘야 한다.
+                let endX = $("#parent1").innerWidth() - $gigu.outerWidth() - parseInt($gigu.css("margin-right"));
+                
+                //물고기 위치 설정하기
+                $gigu.css("left",endX);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="move">이동</button>
+    <div id="parent1">
+        <img src="img/Earth.png" id="gigu">
+    </div>
+</body>
+</html>
