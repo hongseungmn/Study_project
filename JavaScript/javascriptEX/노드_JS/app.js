@@ -7,6 +7,6 @@ app.listen(3000,function() {
 });
 
 app.get("/",function(req,res){
-    res.send("<h1>hi friend!</h1>");
-    res.sendFile(__dirname + "public/main.html");
+    //res.send("<h1>hi friend!</h1>");
+    res.sendFile(__dirname + "/public/main.html");
 });
