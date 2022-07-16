@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유효한 화면의 크기</title>
+    <style>
+        body {
+            margin:0;
+            padding:0;
+        }
+        #main {
+            border: 1px dotted red;
+            width:500px;
+            margin:50px;
+        }
+        #info {
+            border: 10px solid red;
+            position:fixed;
+            left:120px;
+            top:100px;
+        }
+    </style>
+    <script src ="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //스크린의 화면 크기를 출력 - 작업표시줄을 제외한 크기를 출력
+            let str = "";
+            str =="screen.width : " + screen.availWidth() + <br/>;
+            str =="screen.height : " + screen.availHeight() + <br/>;
+            $("#info").html(str);
+        });
+    </script>
+</head>
+<body>
+    <div id="main">
+        <p>안녕1</p><p>안녕2</p><p>안녕3</p><p>안녕4</p><p>안녕5</p>
+        <p>안녕6</p><p>안녕7</p><p>안녕8</p><p>안녕9</p><p>안녕10</p>
+        <p>안녕11</p><p>안녕12</p><p>안녕13</p><p>안녕14</p><p>안녕15</p>
+    </div>
+</body>
+</html>
