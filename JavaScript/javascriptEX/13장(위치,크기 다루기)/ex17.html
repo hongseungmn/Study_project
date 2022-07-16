@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 크기 변경(에 따른 이벤트 처리</title>
+    <style>
+        body {
+            margin:0;
+            padding:0;
+        }
+        #info {
+            border: 10px solid red;
+            position: fixed;
+            left:120px;
+            top:100px;
+        }
+    </style>
+    <script src ="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //window가 resize이벤트 리스너를 등록
+            $(window).on("resize",function(){
+                let str="";
+                str +="window.outerWidth : " + window.outerWidth() + "<br/>";
+                str +="window.outerHeight : " + window.outerHeight() + "<br/>";
+
+                //윈도우 크기 정보 출력
+                $("#info").html(str);
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="info">
+        윈도우 크기 출력
+    </div>
+</body>
+</html>
