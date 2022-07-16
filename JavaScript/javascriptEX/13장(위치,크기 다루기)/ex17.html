@@ -20,6 +20,10 @@
     <script src ="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
+            //화면에서의 윈도우의 위치를 구함
+            let left = window.screenLeft;
+            let top = window.screenTop;
+            console.log("윈도우 위치 left : " = left + "윈도위 위치 top : " + top);
             //window가 resize이벤트 리스너를 등록
             $(window).on("resize",function(){
                 let str="";
