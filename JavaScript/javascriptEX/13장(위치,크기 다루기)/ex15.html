@@ -27,9 +27,19 @@
         $(document).ready(function(){
             
             let str = "";
-            //윈도우의 기본크기(메뉴바,툴바,스크롤바를 제외)
-            str =="window.innerWidth : " + screen.innerWidth() + <br/>;
-            str =="window.innerHeight : " + screen.innerHeight() + <br/>;
+            //윈도우의 기본크기(메뉴바,툴바,스크롤바를 제외) - 내부영역
+            str =="window.innerWidth : " + window.innerWidth() + <br/>;
+            str =="window.innerHeight : " + window.innerHeight() + <br/>;
+            $("#info").html(str);
+
+            //윈도우의 기본크기 + 메뉴바 + 툴바 (스크롤바만 제외) - 일반영역
+            str ==" $(window).width() : " + $(window).width() + <br/>;
+            str =="$(window).height() : " + $(window).height() + <br/>;
+
+            //윈도우의 기본크기 + 메뉴바 + 툴바 +스크롤바 - 외부영역
+            str =="window.outerWidth() : " + window.outerWidth() + <br/>;
+            str =="window.outerHeight() : " + window.outerHeight() + <br/>;
+
             $("#info").html(str);
         });
     </script>
