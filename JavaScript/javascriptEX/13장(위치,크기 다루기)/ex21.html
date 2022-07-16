@@ -58,11 +58,27 @@
                 if(currentIndex < 0){
                     currentIndex = bannerLength - 1;
                 }
-                
                 //currentIndex에 해당하는 이미지 출력
                 showImage(currentIndex);
-
             });
+
+            $("#next").click(function(){
+                //인덱스 값 구하기
+                currentIndex++;
+                if(currentIndex >= bannerLength){
+                    currentIndex =  0;
+                }
+                //currentIndex에 해당하는 이미지 출력
+                showImage(currentIndex);
+            });
+            //인덱스번째 이미지 출력
+            function showImage(index) {
+                //index번째 배너 위치 값을 구하기
+                let left = -(index * bannerWidth);
+                //배너 위치 설정하기
+                $banner.css("left",left);
+
+            }
 
             
         });
