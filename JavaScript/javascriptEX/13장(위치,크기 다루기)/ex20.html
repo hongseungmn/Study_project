@@ -11,6 +11,7 @@
         }
         .wrap {
             margin:50px;
+        }
         #info {
             width:600px;
             height:50px;
@@ -28,8 +29,9 @@
         $(document).ready(function(){
             $("#panel").click(function(e){
                 //panel에 클릭한 전역 위치값 구하기
+                let str = "clientX : " + e.clientX() + ", clientY : " + e.clientY() + "<br/>";
                 //document를 기준으로 하는 위치 값 구하기
-                let str = "pageX : " + e.pageX + ", pageY : " + e.pageY() + "<br/>";
+                str = "pageX : " + e.pageX + ", pageY : " + e.pageY() + "<br/>";
                 $("#info").html(str);
             });
             
