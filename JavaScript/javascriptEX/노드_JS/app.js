@@ -1,12 +1,15 @@
 'use strict'
 let express = require('express');
 let app = express();
+let bodyParser = require("body-parser");
 
 app.listen(3000,function() {
     console.log("Start! express server on port 3000!");
 });
 
 app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 //url routing
 app.get("/",function(req,res){
