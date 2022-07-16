@@ -10,38 +10,57 @@
             margin:0;
             padding:0;
         }
+        #main {
+            border: 2px dotted red;
+            width:1500px;
+            margin:50px;
+        }
         #info {
             border: 10px solid red;
             position: fixed;
             left:120px;
             top:100px;
         }
+        #gotoTop {
+            width:100px;
+            height: 50px;
+        }
     </style>
     <script src ="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            let newWindow = null;
-            $("#create").click(function() {
-                //open()를 이용하여 윈도우 생성하는 코드
-                newWindow = window.open("","newWindow","width=200","height=200");
+                //scroll 이벤트 등록
+                $(window).on("scroll",function(){
+                    //윈도우 스크롤 위치 구하기
+                let str = "";
+                str += "window.pageXOffset : " + window.pageXOffset() +"<br/>";
+                str += "window.pageYOffset : " + window.pageYOffset() +"<br/>";
+
+                $("#info").html(str);
             });
-            $("#move").click(function(){
-                if(newWindow){
-                    //화면(스크린)을 기준으로 하여 윈도우를 이동시킨다.
-                    newWindow.moveTo(500,500);
-                    //현재 윈도우의 위치를 기준으로 하여 윈도우를 이동시킨다.
-                    newWindow.moveBy(500,500);
-                }
-            })
+            //버튼에 이벤트 등록
+            $("#gotoTop").click(function() {
+                //화면을 기준으로 해서 스크롤 위치를 이동
+                //window.scrollTo(0,0);
+                //현재 스크롤 기준으로 스크롤 위치 이동
+                window.scrollBy(100,100);
+            });
         });
     </script>
 </head>
 <body>
+    <div id="main">
+        <p>안녕1</p><p>안녕2</p><p>안녕3</p><p>안녕4</p><p>안녕5</p>
+        <p>안녕6</p><p>안녕7</p><p>안녕8</p><p>안녕9</p><p>안녕10</p>
+        <p>안녕11</p><p>안녕12</p><p>안녕13</p><p>안녕14</p><p>안녕15</p>
+        <p>안녕16</p><p>안녕17</p><p>안녕18</p><p>안녕19</p><p>안녕20</p>
+        <p>안녕21</p><p>안녕22</p><p>안녕23</p><p>안녕24</p><p>안녕25</p>
+        <p>안녕26</p><p>안녕27</p><p>안녕28</p><p>안녕29</p><p>안녕30</p>
+        <button id="gotoTop">처음으로</button>
+    </div>
     <button id="create">생성</button>
-    <button id="move">이동</button>
-
     <div id="info">
-        이동정보 출력
+        스크롤 정보 출력
     </div>
 </body>
 </html>
