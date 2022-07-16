@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 값 구하기</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font-size: 20px;
+        }
+        .nav {
+            margin: 30px 0 0 50px;
+
+        }
+        #btn {
+            width:50px;
+            height:30px;
+        }
+        #container {
+            position: absolute;
+            width:300px;
+            height:200px;
+            left:50px;
+            top:100px;
+            border:2px solid black;
+            overflow: scroll;
+        }
+        img {
+            width: 1000px;
+        }
+    </style>
+    <script src ="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let $info = $("#info");
+            let $container = $("#container");
+
+            //#btn에 클릭 이벤트 등록
+            $("#btn").click(function(e){
+                //스크롤의 위치값 구하기
+                let str = "스크롤 left : " +$container.scrollLeft + "<br/>";
+                str == "스크롤 top : " +$container.scrollTop + "<br/>";
+
+                $info.html(str);
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <button id="btn">확인</button>
+        <div id="info">
+            스크롤 정보 출력
+        </div>
+    </div>
+    <div id="container">
+        <img src="img/Earth.png">
+    </div>
+    
+</body>
+</html>
