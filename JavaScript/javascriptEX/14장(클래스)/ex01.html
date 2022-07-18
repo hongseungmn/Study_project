@@ -15,10 +15,13 @@
             showInfo:function(){
                 //this는 객체 자기자신의 주소(리모컨)
                 //this가 활성화가 되는 시점은 인스턴스가 만들어질때 비로소 활성화가 이루어진다.
-                document.write("name : " + this.name + ", age : " + this.age );
+                //this는 클래스 내에서 지역변수로 숨겨진채로 있다
+                document.write("name : " + this.name + ", age : " + this.age + "<br/>" );
             }
         };
-        user.showInfo()
+        //외부에서 클래스의 메서드를 호출하고, 멤벼변수(프로퍼티)를 사용하고자 한다면 user를 이용해야 한다.
+        user.showInfo();
+        document.write("name : " + user.name + ", age : " + user.age);
     </script>
 </head>
 <body>
