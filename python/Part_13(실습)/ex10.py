@@ -15,3 +15,11 @@ print("---------------------------")
 for filename in os.listdir():
     if os.path.isfile(filename):
         print(filename,"파일입니다.")
+        
+print("---------------------------")
+# 파일의 확장자가 png만 걸러내고자 할 때 endswith()를 사용한다
+files = os.listdir()
+for name in files:
+    if os.path.isfile(name):
+        if name.endswith(".png"):
+            print(name)
