@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리터럴 방식으로 간단한 클래스 생성</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //아래는 리터럴 방식으로 클래스를 만들고 있어서 바로 user라는 변수에 자동으로 
+        //인스턴스가 만들어져서 주소가 대입이 된다.
+        let user = {
+            name:"홍성민",
+            age:23,
+            showInfo:function(){
+                //this는 객체 자기자신의 주소(리모컨)
+                //this가 활성화가 되는 시점은 인스턴스가 만들어질때 비로소 활성화가 이루어진다.
+                document.write("name : " + this.name + ", age : " + this.age );
+            }
+        };
+        user.showInfo()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
