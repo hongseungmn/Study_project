@@ -12,6 +12,8 @@ file.close()
 print("2. writelines() 사용")
 file = open("/Users/hongseongmin/Documents/GitHub/Study_project/python/Part_13(실습)/예제/test.txt","a")
 # 리스트 형태로 바로 파일에 기록했다.
+file.writelines(["하나","둘","셋","넷","다섯","화이팅!"])
+# 리스트로 보내기는 하지만 \n라는 것과 리스트의 내용과 합치는 join()를 이용하여 파일에 기록했다.
 file.writelines("\n".join(["하나","둘","셋","넷","다섯","화이팅!"]))
 file.write("\n")
 file.close()
