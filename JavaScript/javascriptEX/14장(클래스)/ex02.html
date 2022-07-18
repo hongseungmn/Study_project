@@ -72,11 +72,15 @@
                     objThis.setSelectItem($(this));
                 });
 
+                
             },
+            //$menuItem에 해당하는 메뉴 아이템을 선택하기
             setSelectItem:function($menuItem){
+                //기존에 선택한 메뉴가 있다면 .... 삭제해라
                 if(this.$selectMenuItem){
                     this.$selectMenuItem.removeClass("select");
                 }
+                //신규 아이템으로 설정하시오
                 this.$selectMenuItem = $menuItem;
                 this.$selectMenuItem.addClass("select");
             }
@@ -85,7 +89,7 @@
 </head>
 <body>
     <p>첫 번째 탭메뉴</p>
-    <ul class="tab-mmenu" id="tabMenu1">
+    <ul class="tab-menu" id="tabMenu1">
         <li class="menuitem1">google</li>
         <li class="menuitem2">facebook</li>
         <li class="menuitem3">pinterest</li>
