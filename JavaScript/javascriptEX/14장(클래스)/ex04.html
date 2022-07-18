@@ -12,6 +12,7 @@
     <script>
         $(document).ready(function(){
             //매개변수가 5개를 가지고 있는 함수를 정의하고 구현한 코드
+            document.write("일반적 함수 호출 " + "<br/>");
             function showInfo(userName,id,nickName,age,address){
                 document.write("name : " + name + ", id : " + id + ", nickName : " + nickName 
                 + ", age : " + age + ", address : " + address);
@@ -19,6 +20,7 @@
 
             //오브젝트 리터럴 클래스를 매개변수로 받고 있다
             function showInfo(userInfo){
+                document.write("리터럴 방식 " + "<br/>");
                 document.write("name : " + userInfo.name + ", id : " + userInfo.id + ", nickName : " + userInfo.nickName 
                 + ", age : " + userInfo.age + ", address : " + userInfo.address);
             }
