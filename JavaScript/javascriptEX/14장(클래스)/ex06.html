@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 방식으로 클래스 만들기</title>
+    <style>
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //클래스를 설계하는 부분(붕어빵 틀을 만드는 과정) -- 멤버가 4개이다
+            //프로퍼티 (속성) :3개, 멤버 메서드(함수) : 1개
+            function Person() {
+                this.name ="홍성민";
+                this.age = 15;
+                this.address= "강원도 강릉시"
+                this.displayPerson = function(){
+                    document.write("name : " + this.name + ", age : " + this.age + ", address :"+ this.address+"<br/>" );
+                };
+            }
+            //인스턴스를 생성(붕어빵을 만든다.)
+            // person이라는 인스턴스 변수(리모컨)를 통해서 
+            // 얼마든지 멤버들에게 접근해서 변경이 가능하다
+            let person1 = new Person();
+            person1.age = 20;
+            //person에서의 멤버메서드 호출
+            person1.displayPerson();
+
+            //아래와 같이 인스턴스를 하나를 더 만들었다. 하지만 모든 인스턴스의 저장공간은 서로 독립적이다.
+            let person2 = new Person();
+            person2.displayPerson();
+
+
+
+            class User {
+                constructor(name,age,address){
+                    this.name = name;
+                    this.age = age;
+                    this.address = address;
+                }
+                displayPerson = function() {
+                    document.write("name : " + this.name + ", age : " + this.age + ", address :"+ this.address );
+                }
+            }
+            let user = new User("홍길동",20,"인천");
+            user.displayPerson()
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
