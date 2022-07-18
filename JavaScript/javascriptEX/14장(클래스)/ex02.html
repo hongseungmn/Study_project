@@ -15,6 +15,7 @@
             width:100px;
             height:40px;
             background-position-y:0;
+            text-indent: -1000px;
             overflow: hidden;
             display: inline;
             float: left;
@@ -47,7 +48,39 @@
     </style>
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
-        
+        $(document).ready(function(){
+            tabMenu1.init();
+            tabMenu1.initEvent();
+        });
+        //리터럴 클래스로 정의
+        let tabMenu1 = {
+            // 3개의 멤버변수 초기화
+            $tabMenu:null,
+            $menuItems:null,
+            $selectMenuItem:null,
+
+            //요소 값 지정하는 메서드
+            init:function(){
+                this.$tabMenu = $("#tabMenu1");
+                this.$menuItems = this.$tabMenu.find("li");
+            },
+
+            //이벤트 등록
+            initEvent:function(){
+                let objThis = this;
+                this.$menuItems.on("click",function(){
+                    objThis.setSelectItem($(this));
+                });
+
+            },
+            setSelectItem:function($menuItem){
+                if(this.$selectMenuItem){
+                    this.$selectMenuItem.removeClass("select");
+                }
+                this.$selectMenuItem = $menuItem;
+                this.$selectMenuItem.addClass("select");
+            }
+        }
     </script>
 </head>
 <body>
