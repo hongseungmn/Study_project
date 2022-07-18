@@ -6,3 +6,12 @@ dir = os.getcwd()
 print(dir)
 
 print("---------------------------")
+# 작업 디렉토리 안에 파일들의 리스트를 얻고자 할 때 ..디렉토리 반환
+for filename in os.listdir():
+    print(filename)
+    
+print("---------------------------")
+# 파일만 추출하고자 할 때....
+for filename in os.listdir():
+    if os.path.isfile(filename):
+        print(filename,"파일입니다.")
