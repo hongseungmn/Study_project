@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리터럴 클래스를 매개변수의 값으로 사용하기-2</title>
+    <style>
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let $bar1 = $("#bar1");
+            // 아래 첫 번째 방법은 css()를 3번이나 호출하고 있다.
+            //$bar1.css("position","absolute");
+            //$bar1.css("left",100);
+            //$bar1.css("top",100);
+
+            //아래 리터럴 방식은 css()를 1번만 호출을 하고 있다.
+            //가독성ㅇ도 올라가고 프로그램이 효율적으로 된다.
+            $bar1.css({
+                "position" : "absolute",
+                "left" : 100,
+                "top" : 100
+            });
+        });
+    </script>
+</head>
+<body>
+    <img src="img/newbtn.bar.1.png" id="bar1">
+</body>
+</html>
