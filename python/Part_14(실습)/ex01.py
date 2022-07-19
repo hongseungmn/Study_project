@@ -68,3 +68,22 @@ print("------>>>>> list()")
 # list() : 리스트를 생성하는 함수이다
 s = "abacads"
 print(list(s))
+
+
+print("------>>>>> map()")
+# map() : 반복가능한 객체의 각 항목에 주어진 함수를 적용한 후 적용 결과를
+# 반환한다
+def square(n):
+    return n*n
+list3 = [1,2,3,4,5]
+tup1 = (1,2,3,4,5)
+# list3,tup1에 있는 하나하나의 값에 square 함수를 적용시키고 있다
+result = list(map(square,list3)) 
+result2 = list(map(square,tup1))
+print("리스트 적용 : ",result)
+print("튜플 적용 : ", result2)
+
+
+print("------>>>>> dir()")
+# dir() : 객체가 가지고 있는 변수나 함수를 보여준다, 리스트로 결과를 반환한다
+print(dir([1,2,3]))
