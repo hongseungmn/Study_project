@@ -1,5 +1,8 @@
 # 내장 함수에 대한 실습
 
+from turtle import st
+
+
 print("------>>>>> abs()")
 # abs() : 절대값을 반환
 i = -20
@@ -87,3 +90,47 @@ print("튜플 적용 : ", result2)
 print("------>>>>> dir()")
 # dir() : 객체가 가지고 있는 변수나 함수를 보여준다, 리스트로 결과를 반환한다
 print(dir([1,2,3]))
+
+
+print("------>>>>> max(),min()")
+# max(),min() : 리스트나 튜플, 문자열에서 가장 큰 항목과 작은 항목을 반환한다
+values = [1,2,3,4,5]
+print(max(values))
+print(min(values))
+
+
+print("------>>>>> enumerate()")
+# enumerate() : 시퀀스 객체를 입력받아서 열거형 객체를 반환한다
+# 열거형 객체는 첫 번째 요소로는 번호, 두 번째 값은 번호에 해당하는 값을 갖는 객체이다
+# 열거형이란 한정된 값을 가지고 가독성을 높이고 문서화를 하는데 도움을 주는 타입이 바로 열거형이다
+seasons = ["봄","여름","가을","겨울"]
+# enumerate()는 start라는 매개변수가 값을 지정하지 않는다면 0부터 시작한다
+print(list(enumerate(seasons)))
+# start값을 이용하면 원하는 값으로 기준값을 설정할 수가 있다
+print(list(enumerate(seasons,start=1)))
+
+
+print("------>>>>> filter()")
+# filter() : 조건을 제시하는 함수를 만들어서 그 조건에 해당하는 요소를 추출하고자 할 때 사용한다
+# 리턴값들은 리스트의 형태로 반환된다
+# 조건을 제시해주는 함수 정의
+def myfilter(x):
+    return x > 3
+result3 = filter(myfilter,(11,23,34,343,2,2,3))
+print("3을 초과한 수 :",list(result3))
+
+
+print("------>>>>> zip()")
+# zip() : 2개의 리스트를 하나로 묶어주는 함수이다
+numbers = [1,2,3,4]
+list4 = ["하나","둘","셋","넷"]
+print(list(zip(numbers,list4)))
+# 요소의 개수를 맞추어 주는 것이 데이터 누락에 도움이 된다(적은 값을 기준으로 남은 데이터는 소거한다
+numbers2 = [1,2,3]
+list5 = ["하나","둘","셋","넷"]
+print(list(zip(numbers2,list5)))
+
+names = ["신은혁","김연아","손연재"]
+scores = [100,99,95]
+for n,s in zip(names,scores):
+    print(n,s)
