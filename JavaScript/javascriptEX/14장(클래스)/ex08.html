@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>함수방식클래스로 단일 탭메뉴 생성하기</title>
+    <title>함수방식클래스로 다중 탭메뉴 생성하기-2</title>
     <style>
         .tab-menu {
             list-style: none;
@@ -50,10 +50,16 @@
     <script>
         $(document).ready(function(){
             //설계된(정의된) TabMenu클래스 인스턴스 생성하기
-            let tabMenu1 = new TabMenu()
+            let tabMenu1 = new TabMenu();
             //tabMenu1라는 인스턴스 변수(리모컨)를 통하여 필요한 메서드를 호출함
             tabMenu1.init();
             tabMenu1.initEvent();
+
+            let tabMenu2 = new TabMenu();
+            //새로운 인스턴스를 만들어서 다중 탭메뉴를 구성함(코드의 재사용성)
+            tabMenu2.init("#tabMenu2");
+            tabMenu2.initEvent();
+
         });
         
         //TabMenu 클래스 설계하기
@@ -64,8 +70,9 @@
             this.$selectedMenuItem = null;
 
             //초기화 멤버 메서드 init()
-            this.init = function() {
-                this.$tabMenu = $("#tabMenu1");
+            //selecor매개변수를 주어서 여러 개의 탭메뉴를 만들 수가 있게 된다.
+            this.init = function(selector) {
+                this.$tabMenu = $(selector);
                 this.$menuItems = this.$tabMenu.find("li");
             }
             
@@ -102,6 +109,14 @@
         <li class="menuitem5">aribnb</li>
         <li class="menuitem6">path</li>
     </ul>
-    
+    <p>두 번째 탭메뉴</p>
+    <ul class="tab-menu" id="tabMenu2">
+        <li class="menuitem1">google</li>
+        <li class="menuitem2">facebook</li>
+        <li class="menuitem3">pinterest</li>
+        <li class="menuitem4">twitter</li>
+        <li class="menuitem5">aribnb</li>
+        <li class="menuitem6">path</li>
+    </ul>
 </body>
 </html>
