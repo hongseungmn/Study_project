@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로토타입으로 클래스 만들기</title>
+    <style>
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //클래스를 설계하는 부분(붕어빵 틀을 만드는 과정) -- 멤버가 4개이다
+            //프로퍼티 (속성) :3개, 멤버 메서드(함수) : 1개
+            function Person() {
+                this.name ="홍성민";
+                this.age = 15;
+                this.address= "강원도 강릉시"
+                
+            }
+            
+            //프로토 타입으로 메서드를 정의한 방법
+            //클래스 외부로 빼내어 메서드 정의하는 이유는 메서드를 공유해서 사용하기 위해서
+            //메모리를 절약할 수 있다.
+            Person.prototype.displayPerson = function(){
+                document.write("name : " + this.name + ", age : " + this.age + ", address :"+ this.address+"<br/>" );
+            };
+            //인스턴스 생성하기
+            let person1 = new Person();
+            person1.age = 20;
+            //person에서의 멤버메서드 호출
+            person1.displayPerson();
+
+            //아래와 같이 인스턴스를 하나를 더 만들었다. 하지만 모든 인스턴스의 저장공간은 서로 독립적이다.
+            //단, 프로토타입으로 만들어진 메서드는 모든 인스턴스의 공유가 되어서 사용된다는 점이 있다.
+            let person2 = new Person();
+            person2.displayPerson();
+
+
+
+            class User {
+                constructor(name,age,address){
+                    this.name = name;
+                    this.age = age;
+                    this.address = address;
+                }
+                displayPerson = function() {
+                    document.write("name : " + this.name + ", age : " + this.age + ", address :"+ this.address );
+                }
+            }
+            let user = new User("홍길동",20,"인천");
+            user.displayPerson()
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
