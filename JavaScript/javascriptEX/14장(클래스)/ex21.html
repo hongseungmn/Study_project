@@ -49,16 +49,8 @@
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            //설계된(정의된) TabMenu클래스 인스턴스 생성하기
-            let tabMenu1 = new TabMenu("#tabMenu1");
-            //tabMenu1라는 인스턴스 변수(리모컨)를 통하여 필요한 메서드를 호출함
-            //1번째 있는 탭메뉴 아이템 선택
-            tabMenu1.setSelectItemAt(1);
-
-            let tabMenu2 = new TabMenu("#tabMenu2");
-            //새로운 인스턴스를 만들어서 다중 탭메뉴를 구성함(코드의 재사용성)
-            //2번째 있는 탭메뉴 아이템 선택
-            tabMenu2.setSelectItemAt(2);
+            tabMenu("#tabMenu1");
+            tabMenu("#tabMenu2");
 
         });
         
