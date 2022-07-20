@@ -7,7 +7,18 @@
     <title>this의 정체</title>
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
+        //클래스 생성
+        function MyClass(){
+            this.property1 = "value1";
+        };
+        //메서드 정의
+        MyClass.prototype.method1 = function(){
+            alert(this.property1);
+        };
         
+        //this가 객체단에 this가 된다.
+        let my = new MyClass();
+        my.method1();
     </script>
 </head>
 <body>
