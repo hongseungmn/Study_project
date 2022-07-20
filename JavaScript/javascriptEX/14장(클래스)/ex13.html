@@ -11,17 +11,80 @@
             width:400px;
             height:400px;
             font-size:15px;
+            margin-top:20px;
         }
         button:hover{
             background-color: yellow;
         }
     </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //인스턴스를 생성하기
+            let my99dan = new My99Dan();
+
+            let dan = prompt("출력을 원하는 단을 입력하세요");
+            my99dan.print99Ddan(dan);
+            //$("#3dan").click(function(){
+            //    my99dan.print3dan();
+            //});
+            //$("#6dan").click(function(){
+            //    my99dan.print6dan();
+            //});
+            //$("#9dan").click(function(){
+            //    my99dan.print9dan();
+            //});
+            //$("#clear").click(function(){
+            //    my99dan.clear();
+            //});
+        });
+        //클래스 설계하기
+        function My99Dan(){
+            //출력 노드 찾아오기
+            this.$output = $("#output");
+        };
+        My99Dan.prototype.print99Ddan = function(dan){
+            let str="";
+            for(let i=1;i<=9;i++){
+                str += dan + " * " +i + "=" + (dan*i) +"<br/>";
+            }
+            this.$output.html(str);
+        }
+        ////3단 출력
+        //My99Dan.prototype.print3dan = function(){
+        //    this.print99Ddan(3)
+        //}
+        //My99dan.prototype.print6dan = function(){
+        //    this.print99Ddan(6);
+        //}
+        //My99dan.prototype.print9dan = function(){
+        //    this.print99Ddan(9);
+        //}
+        My99dan.prototype.clear = function(){
+            this.$output.html("");
+        }
+
+        let data = 10;
+        function MyClass(){
+            this.data = 0;
+        }
+        MyClass.prototype.method1 = function(){
+            this.data = 20;
+            data = 30;
+            console.log("1. data1 = "+data);
+            console.log("2. this.data = "+this.data);
+            console.log("3. window.data = "+window.data);
+        }
+        let my1 = new MyClass();
+        my1.method1();
+
+    </script>
 </head>
 <body>
     <div>
-        <button id="3dan">3단 출력</button>
+        <!-- <button id="3dan">3단 출력</button>
         <button id="6dan">6단 출력</button>
-        <button id="9dan">9단 출력</button>
+        <button id="9dan">9단 출력</button> -->
         <button id="clear">지우기</button>
     </div>
     <div id="output">
