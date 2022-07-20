@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수와 클래스 차이</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        let userName = "홍성민";
+
+        //함수 정의
+        function User(name){
+            this.userName = name;
+        }
+
+        //함수 호출
+        User("김연아"); 
+        console.log("userName = " + userName);
+        //->함수 호출이므로 출력은 '김연아'이다. 
+
+    </script>
+</head>
+<body>
+    <button id="myButton">리스너 실행</button>
+</body>
+</html>
