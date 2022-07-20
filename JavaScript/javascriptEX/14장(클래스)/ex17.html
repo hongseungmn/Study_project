@@ -7,20 +7,25 @@
     <title>this의 정체-4</title>
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
-        //전역변수
-        let data = 10;
-        //함수 생성
-        $(document).ready(function(){
-            $("#myButton").click(function(){
-                this.data = 20;
+        //클래스 생성
+        function MyClass(){
+            this.data = 0;
+        };
+        //메서드 정의
+        MyClass.prototype.method1 = function(){
+            function inner(){
+                this.data = 30;
                 data = 30;
-                console.log("1. data = " +data);
-                //이벤트리스너에서는 this가 이벤트가 발생하는 객체의 것이다.
-                console.log("2. this.data = " +this.data);
-                console.log("3. window.data = " +window.data);
-            });
-        });
-        
+
+                console.log("1. data = " + data);
+                //아무리 클래스단이라도 중첩함수에서는 this는 윈도우 객체의 소속이 되는 것이다.
+                console.log("2. this.data = " + this.data);
+                console.log("3. window.data = " + window.data);
+            }
+            inner();
+        }
+        let my = new MyClass();
+        my.method1();
     </script>
 </head>
 <body>
