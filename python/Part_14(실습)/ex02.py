@@ -43,3 +43,4 @@ print(sorted(students,key=lambda students: students[2],reverse=True))
 #안정성이란 동일한 키값을 가지고 있는 행(레코드)이 여러 개 존재하더라도 행의 순서가 그대로 유지가 
 #되는 성질을 안정성이라고 한다
 data = [(1,100),(1,200),(1,300),(2,100),(2,200)]
+print(sorted(data,key=lambda data:data[0]))
