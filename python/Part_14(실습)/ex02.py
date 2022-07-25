@@ -26,4 +26,15 @@ print("----------------------------------------")
 #key 매개변수 실습
 #key = str.lower 은 대소문자 구별 없이..
 print(sorted("가는 고향 아쉬운 사람 The health not fo their but".split(), key=str.lower))
-    
+# 튜플 리스트를 만들어서 key 매개변수에 정렬하는 기준을 제시
+students = [
+    ("신은혁",4.4,20210701),
+    ("홍성민",4.2,201945009),
+    ("김연아",3.0,20000701)]
+#students 튜플리스트의 학번을 기준으로 오름차순 정렬이 이루어진다.
+print(sorted(students,key=lambda students: students[1]))
+
+#오름차순 정렬과 내림차순 정렬
+#sort(),sorted()함수에는 reverse매개변수가 존재한다. reverse 매개변수를 이용하여
+#내림차순, 오름차순을 결정지을 수 있다.
+print(sorted(students,key=lambda students: students[2],reverse=True))
