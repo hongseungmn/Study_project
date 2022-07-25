@@ -38,3 +38,8 @@ print(sorted(students,key=lambda students: students[1]))
 #sort(),sorted()함수에는 reverse매개변수가 존재한다. reverse 매개변수를 이용하여
 #내림차순, 오름차순을 결정지을 수 있다.
 print(sorted(students,key=lambda students: students[2],reverse=True))
+
+#정렬의 안정성
+#안정성이란 동일한 키값을 가지고 있는 행(레코드)이 여러 개 존재하더라도 행의 순서가 그대로 유지가 
+#되는 성질을 안정성이라고 한다
+data = [(1,100),(1,200),(1,300),(2,100),(2,200)]
