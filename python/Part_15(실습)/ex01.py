@@ -21,3 +21,8 @@ class MyCounter(object):
             self.current += 1
             # self.current 값이 1을 증가했지만 이전 값을 출력을 하기 위해서 -1 해서 리턴해준다
             return self.current -1
+        
+if __name__ == "__main__":
+    counter = MyCounter(1,10) # 생성자 호출
+    for n in counter:
+        print(n,end=" ")
