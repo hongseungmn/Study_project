@@ -4,3 +4,25 @@
 #이터레이터는 클래스를 반복가능한 클래스로 만들어 주는 것이며, 또한 모든 로직을 수행한 후 한번에 메모리에 적재를 해서 출력한다. 그에 반해 제너레이터는 yield 키워드로
 #되어있는 문장을 실행하면 대기상태로 빠지고 다음 문장을 실행한다. 그리고 난 후 다시 yield 키워드를 만나면 또 다시 대기상태에 빠지는 그러한 형태를 취하며
 #아울러 메모리 적재 방식에서도 하나하나씩 출력을 한다는 것이 차이점이다.
+
+# def MyCounterGen(low,high):
+#     while low <= high:
+#         yield low
+#         low += 1
+        
+# if __name__ == "__main__":
+#     for n in MyCounterGen(1,10):
+#         print(n,end=" ")
+        
+import time 
+def gen(count):
+    start = 1
+    while start <= count:
+        yield start # yield 를 실행하고 대기 상태로 빠진다
+        time.sleep(2) # yield start 를 실행한 후 2초간 대기
+        start += 1
+        print("while 문 start 값 : " , start)
+        
+if __name__ =="__main__":
+    for n in gen(3):
+        print("for 문 실행 n값 : ",n,end=" ")
