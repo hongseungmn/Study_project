@@ -60,3 +60,17 @@ start = time.time()     #시작값
 fib_num(1000)
 end = time.time()       #종료값
 print("fib_num() 실행 시간(초) : ",end-start)
+#asctime()는 현재 날짜와 시간을 문자열 형태로 표식해준다
+print("현재 날짜 및 시간 : ",time.asctime())
+
+#sleep() : 프로그램을 일시정지시키는 함수
+for i in range(10,0,-1):
+    print(i,end=" ")
+    time.sleep(1)   #1초간 일서정지
+print("완료!!!")
+
+#calendar 모듈 사용하기
+#2016.8월 달력 출력하기
+import calendar
+cal = calendar.month(2016,8)
+print(cal)
