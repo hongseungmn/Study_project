@@ -15,7 +15,7 @@ class NumBox(object):
     def __rsub__(self,num):
         self.num -= num
         
-        
+    
         
 n = NumBox(40)
 # 객체와 int 간에는 연산이 이루어지지 않는다.
