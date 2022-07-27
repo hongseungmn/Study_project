@@ -15,3 +15,7 @@ print(fib_list(100))
 
 # * 는 fibo 모듈에 있는 모든 것(변수, 함수, 클래스)을 가져오라는 뜻이다
 from fibo import *
+
+# 모듈에다가 별칭을 붙이기
+import fibo as f
+f.fib_list(1000)
